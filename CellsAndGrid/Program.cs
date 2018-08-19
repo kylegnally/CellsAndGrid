@@ -10,10 +10,10 @@ namespace CellsAndGrid
     {
         static void Main(string[] args)
         {
-            int xPosition = 8;
-            int yPosition = 8;
+            int xSize = 8;
+            int ySize = 8;
 
-            Grid grid = new Grid(xPosition, yPosition);
+            Grid grid = new Grid(xSize, ySize);
         }
     }
 
@@ -26,12 +26,28 @@ namespace CellsAndGrid
     {
         private int _xSize;
         private int _ySize;
-        private int[,] _coordinates;
+        private Cell[,] _gridArray;
 
         public Grid(int xSize, int ySize)
         {
             _xSize = xSize;
             _ySize = ySize;
+            _gridArray = new Cell[xSize, ySize];
+            AddCells(_xSize, _ySize);
         }
+
+        private void AddCells(int sizeX, int sizeY)
+        {
+            foreach (Cell cell in _gridArray)
+            {
+                for (int x = 0; x < _xSize; x++)
+                {
+                    for (int y = 0; y < _ySize; y++)
+                    {
+                        
+                    }
+                }
+            }
+        } 
     }
 }
