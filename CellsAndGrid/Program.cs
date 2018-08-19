@@ -14,12 +14,34 @@ namespace CellsAndGrid
             int ySize = 8;
 
             Grid grid = new Grid(xSize, ySize);
+            Console.WriteLine("Grid created.");
         }
     }
 
     class Cell
     {
+        private int _xPos;
+        private int _yPos;
 
+        private int[,] _position;
+        private int[,] _above;
+        private int[,] _toRight;
+        private int[,] _below;
+        private int[,] _toLeft;
+
+
+        public Cell(int x, int y)
+        {
+            _xPos = x;
+            _yPos = y;
+            _position = new int[x, y];
+        }
+
+        public int[,] Position
+        {
+            get { return _position; }
+            set { Position = value; }
+        }
     }
 
     class Grid
@@ -40,11 +62,13 @@ namespace CellsAndGrid
         {
             foreach (Cell cell in _gridArray)
             {
+                int z = 0;
                 for (int x = 0; x < _xSize; x++)
                 {
                     for (int y = 0; y < _ySize; y++)
-                    {
-                        
+                    {                        
+                        Cell gridCell = new Cell(x, y);
+                        _gridArray[x,y] = gridCell;
                     }
                 }
             }
