@@ -24,10 +24,10 @@ namespace CellsAndGrid
         private int _yPos;
 
         private int[,] _position;
-        private int[,] _above;
-        private int[,] _toRight;
-        private int[,] _below;
-        private int[,] _toLeft;
+        //private int[,] _above;
+        //private int[,] _toRight;
+        //private int[,] _below;
+        //private int[,] _toLeft;
 
 
         public Cell(int x, int y)
@@ -54,8 +54,12 @@ namespace CellsAndGrid
         {
             _xSize = xSize;
             _ySize = ySize;
-            _gridArray = new Cell[xSize, ySize];
             AddCells(_xSize, _ySize);
+        }
+
+        public Cell[,] GridArray
+        {
+            set { _gridArray = value; }
         }
 
         private void AddCells(int sizeX, int sizeY)
@@ -66,9 +70,8 @@ namespace CellsAndGrid
                 for (int x = 0; x < _xSize; x++)
                 {
                     for (int y = 0; y < _ySize; y++)
-                    {                        
-                        Cell gridCell = new Cell(x, y);
-                        _gridArray[x,y] = gridCell;
+                    {
+                        _gridArray[x, y] = new Cell(x, y);
                     }
                 }
             }
