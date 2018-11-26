@@ -15,66 +15,22 @@ namespace CellsAndGrid
 
             Grid grid = new Grid(xSize, ySize);
             Console.WriteLine("Grid created.");
-        }
-    }
+            Console.WriteLine();
+            Console.WriteLine("Enter the X coordinate of the cell you'd like to find: ");
+            int xPos = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine("Enter the Y coordinate of the cell you'd like to find: ");
+            int yPos = int.Parse(Console.ReadLine());
 
-    class Cell
-    {
-        private int _xPos;
-        private int _yPos;
-
-        private int[,] _position;
-        //private int[,] _above;
-        //private int[,] _toRight;
-        //private int[,] _below;
-        //private int[,] _toLeft;
-
-
-        public Cell(int x, int y)
-        {
-            _xPos = x;
-            _yPos = y;
-            _position = new int[x, y];
-        }
-
-        public int[,] Position
-        {
-            get { return _position; }
-            set { Position = value; }
-        }
-    }
-
-    class Grid
-    {
-        private int _xSize;
-        private int _ySize;
-        private Cell[,] _gridArray;
-
-        public Grid(int xSize, int ySize)
-        {
-            _xSize = xSize;
-            _ySize = ySize;
-            AddCells(_xSize, _ySize);
-        }
-
-        public Cell[,] GridArray
-        {
-            set { _gridArray = value; }
-        }
-
-        private void AddCells(int sizeX, int sizeY)
-        {
-            foreach (Cell cell in _gridArray)
+            for (int i = 0; i < xSize; i++)
             {
-                int z = 0;
-                for (int x = 0; x < _xSize; x++)
+                for (int j = 0; j < ySize; j++)
                 {
-                    for (int y = 0; y < _ySize; y++)
-                    {
-                        _gridArray[x, y] = new Cell(x, y);
-                    }
+                    Console.WriteLine(grid.FindCell(xPos, yPos));
                 }
             }
-        } 
+
+            Console.WriteLine("Finished.");
+        }
     }
 }
