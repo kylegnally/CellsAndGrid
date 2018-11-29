@@ -8,21 +8,31 @@ namespace CellsAndGrid
 {
     class Cell
     {
-        //private int[,] _above;
-        //private int[,] _toRight;
-        //private int[,] _below;
-        //private int[,] _toLeft;
-
 
         public Cell(int x, int y)
         {
-            Position = new int[x, y];
             XPosition = x;
             YPosition = y;
+            Selected = false;
+
+            SetNeighbors(x, y);
         }
 
-        public int[,] Position { get; }
         public int XPosition { get; }
         public int YPosition { get; }
+
+        public int Above { get; private set; }
+        public int ToRight { get; private set; }
+        public int Below { get; private set; }
+        public int ToLeft { get; private set; }
+        public bool Selected { get; set; }
+
+        private void SetNeighbors(int currentX, int currentY)
+        {
+            Above = currentX - 1;
+            ToRight = currentY + 1;
+            Below = currentX + 1;
+            ToLeft = currentY - 1;
+        }
     }
 }

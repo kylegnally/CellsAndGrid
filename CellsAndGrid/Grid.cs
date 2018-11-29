@@ -36,17 +36,22 @@ namespace CellsAndGrid
             }
         }
 
-        public string FindCell(int x, int y)
+        public void FindCell(int findX, int findY)
         {
-            int[,] positionToFind = new int[x,y];
             foreach (Cell cell in _gridArray)
             {
-                if (positionToFind == cell.Position)
+                if (findX == cell.XPosition && findY == cell.YPosition)
                 {
-                    return cellPosition = "The cell's position is " + cell.XPosition + "," + cell.YPosition;
+                    cell.Selected = true;
+                    Console.WriteLine("The cell's position is " + cell.XPosition + "," + cell.YPosition);
+                    Console.WriteLine("Its upper neighbor is at " + cell.Above + "," + cell.YPosition);
+                    Console.WriteLine("Its right-hand neighbor is at " + cell.XPosition + "," + cell.ToRight);
+                    Console.WriteLine("Its lower neighbor is at " + cell.Below + "," + cell.YPosition);
+                    Console.WriteLine("Its left-hand neighbor is at " + cell.XPosition + "," + cell.ToLeft);
+
                 }
+                else Console.WriteLine("Cell not found.");
             }
-            return cellPosition = "Cell not found.";
         }
     }
 }
