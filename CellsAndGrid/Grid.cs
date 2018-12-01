@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CellsAndGrid
 {
@@ -60,10 +56,15 @@ namespace CellsAndGrid
                     if (cell.Selected)
                     {
                         gridString += "* ";
+                        cell.Visited = true;
                     }
                     else
                     {
-                        gridString += "- ";
+                        if (cell.Visited)
+                        {
+                            gridString += "  ";
+                        }
+                        else gridString += "- ";
                     }
                     lineLength++;
 
@@ -71,12 +72,6 @@ namespace CellsAndGrid
                     {
                         gridString += "\n";
                         lineLength = 0;
-                    }
-
-                    if (cell.Edge)
-                    {
-                        gridString += "\nThe world ends here.";
-
                     }
                 }
 
@@ -87,14 +82,40 @@ namespace CellsAndGrid
 
         }
 
-        private bool TestBounds(int xSize, int ySize, int findX, int findY)
+        public bool TestBounds(int xSize, int ySize, int findX, int findY)
         {
-
-            if (findX > xSize - 1 || findY > ySize - 1 || findX < 0 || findY < 0)
+            if (findX > xSize - 1)
             {
+                findX--;
                 Console.WriteLine("\nThe world ends here.");
                 return false;
             }
+
+            if (findY > ySize - 1)
+            {
+                findY--;
+                Console.WriteLine("\nThe world ends here.");
+                return false;
+            }
+
+            if (findX < 0)
+            {
+                findX++;
+                Console.WriteLine("\nThe world ends here.");
+                return false;
+            }
+
+            if (findY < 0)
+            {
+                findY++;
+                Console.WriteLine("\nThe world ends here.");
+                return false;
+            }
+            //if (findX > xSize - 1 || findY > ySize - 1 || findX < 0 || findY < 0)
+            //{
+            //    Console.WriteLine("\nThe world ends here.");
+            //    return false;
+            //}
             else return true;
         }
     }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CellsAndGrid
+﻿namespace CellsAndGrid
 {
     class Cell
     {
@@ -13,7 +7,8 @@ namespace CellsAndGrid
             XPosition = x;
             YPosition = y;
             Selected = false;
-            SetNeighbors(x, y);
+            Visited = false;
+            //SetNeighbors(x, y);
         }
 
         public int XPosition { get; }
@@ -24,6 +19,7 @@ namespace CellsAndGrid
         //public int Below { get; private set; }
         //public int ToLeft { get; private set; }
         public bool Selected { get; set; }
+        public bool Visited { get; set; }
 
         private void SetNeighbors(int currentX, int currentY)
         {
