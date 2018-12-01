@@ -49,29 +49,53 @@ namespace CellsAndGrid
 
         public string DrawGrid(int xSize, int ySize, int findX, int findY)
         {
-            Console.Clear();
-            string gridString = null;
-            int lineLength = 0;
-            foreach (Cell cell in _gridArray)
-            {
-                if (cell.Selected)
-                {
-                    gridString += "* ";
-                }
-                else
-                {
-                    gridString += "- ";
-                }
-                lineLength++;
+            string gridString = "";
 
-                if (lineLength == xSize)                
+            if (TestBounds(xSize, ySize, findX, findY))
+            {
+                Console.Clear();
+                int lineLength = 0;
+                foreach (Cell cell in _gridArray)
                 {
-                    gridString += "\n";
-                    lineLength = 0;
+                    if (cell.Selected)
+                    {
+                        gridString += "* ";
+                    }
+                    else
+                    {
+                        gridString += "- ";
+                    }
+                    lineLength++;
+
+                    if (lineLength == xSize)
+                    {
+                        gridString += "\n";
+                        lineLength = 0;
+                    }
+
+                    if (cell.Edge)
+                    {
+                        gridString += "\nThe world ends here.";
+
+                    }
                 }
+
+                gridString += "\n";
+                
             }
-            gridString += "\n";
             return gridString;
+
+        }
+
+        private bool TestBounds(int xSize, int ySize, int findX, int findY)
+        {
+
+            if (findX > xSize - 1 || findY > ySize - 1 || findX < 0 || findY < 0)
+            {
+                Console.WriteLine("\nThe world ends here.");
+                return false;
+            }
+            else return true;
         }
     }
 }

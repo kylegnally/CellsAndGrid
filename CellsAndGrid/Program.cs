@@ -10,9 +10,12 @@ namespace CellsAndGrid
     {
         static void Main(string[] args)
         {
-            int xSize = 8;
-            int ySize = 8;
+            int xSize;
+            int ySize;
 
+            Console.WriteLine("Enter the size for each side of the grid: ");
+            xSize = int.Parse(Console.ReadLine());
+            ySize = xSize;
             Grid grid = new Grid(xSize, ySize);
             Console.WriteLine("Grid created.");
             Console.WriteLine();

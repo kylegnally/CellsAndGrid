@@ -8,13 +8,11 @@ namespace CellsAndGrid
 {
     class Cell
     {
-
         public Cell(int x, int y)
         {
             XPosition = x;
             YPosition = y;
             Selected = false;
-
             SetNeighbors(x, y);
         }
 
