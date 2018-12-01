@@ -22,6 +22,9 @@ namespace CellsAndGrid
             Console.WriteLine("Enter the Y coordinate of the cell you'd like to find: ");
             int yPos = int.Parse(Console.ReadLine());
 
+            //xPos--;
+            //yPos--;
+
             grid.FindCell(xPos, yPos);
 
             Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));

@@ -30,7 +30,7 @@ namespace CellsAndGrid
                 {
                     for (int y = 0; y < _ySize; y++)
                     {
-                        _gridArray[x, y] = new Cell(x, y);
+                        _gridArray[y, x] = new Cell(y, x);
                     }
                 }
             }
@@ -56,6 +56,27 @@ namespace CellsAndGrid
 
         public string DrawGrid(int xSize, int ySize, int findX, int findY)
         {
+            string gridString = "";
+            int lineLength = 0;
+            foreach (Cell cell in _gridArray)
+            {
+                if (cell.XPosition == findX && cell.YPosition == findY)
+                {
+                    gridString += "* ";
+                }
+                else
+                {
+                    gridString += "- ";
+                }
+                lineLength++;
+
+                if (lineLength == xSize)                
+                {
+                    gridString += "\n";
+                    lineLength = 0;
+                }
+            }
+            return gridString;
 
         }
     }
