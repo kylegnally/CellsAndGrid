@@ -24,7 +24,7 @@ namespace CellsAndGrid
 
             grid.FindCell(xPos, yPos);
 
-            // draw the grid here
+            Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
 
             Console.WriteLine("Finished.");
         }

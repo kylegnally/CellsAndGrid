@@ -53,5 +53,10 @@ namespace CellsAndGrid
                 else Console.WriteLine("Cell not found.");
             }
         }
+
+        public string DrawGrid(int xSize, int ySize, int findX, int findY)
+        {
+
+        }
     }
 }
