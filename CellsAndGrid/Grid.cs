@@ -30,37 +30,38 @@ namespace CellsAndGrid
                 {
                     for (int y = 0; y < _ySize; y++)
                     {
-                        _gridArray[y, x] = new Cell(y, x);
+                        _gridArray[x, y] = new Cell(x, y);
                     }
                 }
             }
         }
 
-        public void FindCell(int findX, int findY)
+        public void FindCell(int findY, int findX)
         {
             foreach (Cell cell in _gridArray)
             {
+                cell.Selected = false;
                 if (findX == cell.XPosition && findY == cell.YPosition)
                 {
                     cell.Selected = true;
-                    Console.WriteLine("The cell's position is " + cell.XPosition + "," + cell.YPosition);
-                    Console.WriteLine("Its upper neighbor is at " + cell.Above + "," + cell.YPosition);
-                    Console.WriteLine("Its right-hand neighbor is at " + cell.XPosition + "," + cell.ToRight);
-                    Console.WriteLine("Its lower neighbor is at " + cell.Below + "," + cell.YPosition);
-                    Console.WriteLine("Its left-hand neighbor is at " + cell.XPosition + "," + cell.ToLeft);
+                    //Console.WriteLine("The cell's position is " + cell.XPosition + "," + cell.YPosition);
+                    //Console.WriteLine("Its upper neighbor is at " + cell.Above + "," + cell.YPosition);
+                    //Console.WriteLine("Its right-hand neighbor is at " + cell.XPosition + "," + cell.ToRight);
+                    //Console.WriteLine("Its lower neighbor is at " + cell.Below + "," + cell.YPosition);
+                    //Console.WriteLine("Its left-hand neighbor is at " + cell.XPosition + "," + cell.ToLeft);
 
                 }
-                else Console.WriteLine("Cell not found.");
+                //else Console.WriteLine("Cell not found.");
             }
         }
 
         public string DrawGrid(int xSize, int ySize, int findX, int findY)
         {
-            string gridString = "";
+            string gridString = null;
             int lineLength = 0;
             foreach (Cell cell in _gridArray)
             {
-                if (cell.XPosition == findX && cell.YPosition == findY)
+                if (cell.Selected)
                 {
                     gridString += "* ";
                 }
@@ -76,8 +77,8 @@ namespace CellsAndGrid
                     lineLength = 0;
                 }
             }
+            gridString += "\n";
             return gridString;
-
         }
     }
 }

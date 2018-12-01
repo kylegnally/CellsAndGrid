@@ -22,14 +22,45 @@ namespace CellsAndGrid
             Console.WriteLine("Enter the Y coordinate of the cell you'd like to find: ");
             int yPos = int.Parse(Console.ReadLine());
 
-            //xPos--;
-            //yPos--;
+            xPos--;
+            yPos--;
 
             grid.FindCell(xPos, yPos);
 
             Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
 
-            Console.WriteLine("Finished.");
+            Console.WriteLine("\nPress an arrow key (press ESC to end):");
+            
+            while (Console.ReadKey().Key != ConsoleKey.Escape)
+            {
+                var ch = Console.ReadKey(false).Key;
+                switch (ch)
+                {
+                    case ConsoleKey.UpArrow:
+                        yPos--;
+                        grid.FindCell(xPos, yPos);
+                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        break;
+                    case ConsoleKey.RightArrow:
+                        xPos++;
+                        grid.FindCell(xPos, yPos);
+                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        break;
+
+                    case ConsoleKey.DownArrow:
+                        yPos++;
+                        grid.FindCell(xPos, yPos);
+                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        break;
+
+                    case ConsoleKey.LeftArrow:
+                        xPos--;
+                        grid.FindCell(xPos, yPos);
+                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        break;
+                }
+            }
+            //Console.WriteLine("Finished.");
         }
     }
 }
