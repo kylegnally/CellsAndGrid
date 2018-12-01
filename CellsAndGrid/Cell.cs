@@ -19,18 +19,18 @@ namespace CellsAndGrid
         public int XPosition { get; }
         public int YPosition { get; }
 
-        public int Above { get; private set; }
-        public int ToRight { get; private set; }
-        public int Below { get; private set; }
-        public int ToLeft { get; private set; }
+        //public int Above { get; private set; }
+        //public int ToRight { get; private set; }
+        //public int Below { get; private set; }
+        //public int ToLeft { get; private set; }
         public bool Selected { get; set; }
 
         private void SetNeighbors(int currentX, int currentY)
         {
-            Above = currentX - 1;
-            ToRight = currentY + 1;
-            Below = currentX + 1;
-            ToLeft = currentY - 1;
+            //Above = currentX - 1;
+            //ToRight = currentY + 1;
+            //Below = currentX + 1;
+            //ToLeft = currentY - 1;
         }
     }
 }
