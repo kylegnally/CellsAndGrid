@@ -28,7 +28,6 @@ namespace CellsAndGrid
             grid.FindCell(xPos, yPos);
 
             Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-
             Console.WriteLine("\nPress an arrow key (press ESC to end):");
             
             while (Console.ReadKey().Key != ConsoleKey.Escape)
@@ -60,7 +59,6 @@ namespace CellsAndGrid
                         break;
                 }
             }
-            //Console.WriteLine("Finished.");
         }
     }
 }

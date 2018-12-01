@@ -51,7 +51,6 @@ namespace CellsAndGrid
                     //Console.WriteLine("Its left-hand neighbor is at " + cell.XPosition + "," + cell.ToLeft);
 
                 }
-                //else Console.WriteLine("Cell not found.");
             }
         }
 
