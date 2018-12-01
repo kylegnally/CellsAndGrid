@@ -11,7 +11,6 @@ namespace CellsAndGrid
         private readonly int _xSize;
         private readonly int _ySize;
         private readonly Cell[,] _gridArray;
-        private string cellPosition = "";
 
         public Grid(int xSize, int ySize)
         {
@@ -44,12 +43,6 @@ namespace CellsAndGrid
                 if (findX == cell.XPosition && findY == cell.YPosition)
                 {
                     cell.Selected = true;
-                    //Console.WriteLine("The cell's position is " + cell.XPosition + "," + cell.YPosition);
-                    //Console.WriteLine("Its upper neighbor is at " + cell.Above + "," + cell.YPosition);
-                    //Console.WriteLine("Its right-hand neighbor is at " + cell.XPosition + "," + cell.ToRight);
-                    //Console.WriteLine("Its lower neighbor is at " + cell.Below + "," + cell.YPosition);
-                    //Console.WriteLine("Its left-hand neighbor is at " + cell.XPosition + "," + cell.ToLeft);
-
                 }
             }
         }
