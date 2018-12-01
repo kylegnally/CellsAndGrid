@@ -56,6 +56,7 @@ namespace CellsAndGrid
 
         public string DrawGrid(int xSize, int ySize, int findX, int findY)
         {
+            Console.Clear();
             string gridString = null;
             int lineLength = 0;
             foreach (Cell cell in _gridArray)
