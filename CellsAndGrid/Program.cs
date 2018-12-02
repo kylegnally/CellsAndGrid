@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System;
 
 namespace CellsAndGrid
 {
@@ -29,7 +34,7 @@ namespace CellsAndGrid
             Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
             Console.WriteLine("\nPress an arrow key (press any other key to end):");
             HandleDirection();
-            
+
             void HandleDirection()
             {
                 switch (GetDirection())
@@ -65,7 +70,7 @@ namespace CellsAndGrid
                         break;
                 }
             }
-            
+
             ConsoleKey GetDirection()
             {
                 var ch = Console.ReadKey(false).Key;

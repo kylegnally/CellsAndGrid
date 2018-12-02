@@ -76,7 +76,7 @@ namespace CellsAndGrid
                 }
 
                 gridString += "\n";
-                
+
             }
             gridString += "Press (ESC) to exit the program or (W) to write the array to a file.";
             return gridString;
