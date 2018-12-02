@@ -78,44 +78,18 @@ namespace CellsAndGrid
                 gridString += "\n";
                 
             }
+            gridString += "Press (ESC) to exit the program or (W) to write the array to a file.";
             return gridString;
 
         }
 
         public bool TestBounds(int xSize, int ySize, int findX, int findY)
         {
-            if (findX > xSize - 1)
+            if (findX > xSize - 1 || findY > ySize - 1 || findX < 0 || findY < 0)
             {
-                findX--;
                 Console.WriteLine("\nThe world ends here.");
                 return false;
             }
-
-            if (findY > ySize - 1)
-            {
-                findY--;
-                Console.WriteLine("\nThe world ends here.");
-                return false;
-            }
-
-            if (findX < 0)
-            {
-                findX++;
-                Console.WriteLine("\nThe world ends here.");
-                return false;
-            }
-
-            if (findY < 0)
-            {
-                findY++;
-                Console.WriteLine("\nThe world ends here.");
-                return false;
-            }
-            //if (findX > xSize - 1 || findY > ySize - 1 || findX < 0 || findY < 0)
-            //{
-            //    Console.WriteLine("\nThe world ends here.");
-            //    return false;
-            //}
             else return true;
         }
     }
