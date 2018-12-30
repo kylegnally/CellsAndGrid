@@ -71,14 +71,15 @@ namespace CellsAndGrid
 
         }
 
-        public bool TestBounds(int xSize, int ySize, int findX, int findY)
+        public string TestBounds(int findX, int findY, int gridSize)
         {
-            if (findX > xSize - 1 || findY > ySize - 1 || findX < 0 || findY < 0)
+            string edgeString = "";
+            if (_gridArray[findX, findY].EdgeCell)
             {
-                Console.WriteLine("\nThe world ends here.");
-                return false;
+                edgeString = "\nYou have struck a wall and cannot move further in that direction.";
             }
-            else return true;
+
+            return edgeString;
         }
     }
 }

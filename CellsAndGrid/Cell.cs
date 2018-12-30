@@ -29,12 +29,14 @@ namespace CellsAndGrid
             }
             else
             {
-                
-                if (Visited)
+                if (Visited && !EdgeCell)
                 {
                     Contents = "  ";
                 }
-                else if (EdgeCell) Contents = "% ";
+                else if (EdgeCell)
+                {
+                    Contents = "% ";
+                }
                 else Contents = "- ";
             }
         }

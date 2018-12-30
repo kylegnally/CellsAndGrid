@@ -44,26 +44,48 @@ namespace CellsAndGrid
                     case ConsoleKey.UpArrow:
                         yPos--;
                         grid.FindCell(xPos, yPos, gridSize);
+                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        {
+                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            yPos++;
+                            HandleDirection();
+                        }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;
                     case ConsoleKey.RightArrow:
                         xPos++;
                         grid.FindCell(xPos, yPos, gridSize);
+                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        {
+                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            xPos--;
+                            HandleDirection();
+                        }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;
-
                     case ConsoleKey.DownArrow:
                         yPos++;
                         grid.FindCell(xPos, yPos, gridSize);
+                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        {
+                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            yPos--;
+                            HandleDirection();
+                        }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;
-
                     case ConsoleKey.LeftArrow:
                         xPos--;
                         grid.FindCell(xPos, yPos, gridSize);
+                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        {
+                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            xPos++;
+                            HandleDirection();
+                        }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;
