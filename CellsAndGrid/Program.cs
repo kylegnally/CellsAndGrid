@@ -13,11 +13,13 @@ namespace CellsAndGrid
         {
             int xSize;
             int ySize;
+            int gridSize;
 
             Console.WriteLine("Enter the size for each side of the grid: ");
             xSize = int.Parse(Console.ReadLine());
             ySize = xSize;
-            Grid grid = new Grid(xSize, ySize);
+            gridSize = xSize;
+            Grid grid = new Grid(xSize, ySize, gridSize);
             Console.WriteLine("Grid created.");
             Console.WriteLine();
             Console.WriteLine("Enter the starting X coordinate: ");
@@ -29,7 +31,7 @@ namespace CellsAndGrid
             xPos--;
             yPos--;
 
-            grid.FindCell(xPos, yPos);
+            grid.FindCell(xPos, yPos, gridSize);
 
             Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
             Console.WriteLine("\nPress an arrow key (press any other key to end):");
@@ -41,27 +43,27 @@ namespace CellsAndGrid
                 {
                     case ConsoleKey.UpArrow:
                         yPos--;
-                        grid.FindCell(xPos, yPos);
+                        grid.FindCell(xPos, yPos, gridSize);
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;
                     case ConsoleKey.RightArrow:
                         xPos++;
-                        grid.FindCell(xPos, yPos);
+                        grid.FindCell(xPos, yPos, gridSize);
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;
 
                     case ConsoleKey.DownArrow:
                         yPos++;
-                        grid.FindCell(xPos, yPos);
+                        grid.FindCell(xPos, yPos, gridSize);
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;
 
                     case ConsoleKey.LeftArrow:
                         xPos--;
-                        grid.FindCell(xPos, yPos);
+                        grid.FindCell(xPos, yPos, gridSize);
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                         HandleDirection();
                         break;

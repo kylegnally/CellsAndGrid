@@ -6,12 +6,14 @@ namespace CellsAndGrid
     {
         private readonly int _xSize;
         private readonly int _ySize;
+        private int _gridSize;
         private readonly Cell[,] _gridArray;
 
-        public Grid(int xSize, int ySize)
+        public Grid(int xSize, int ySize, int gridSize)
         {
             _xSize = xSize;
             _ySize = ySize;
+            _gridSize = gridSize;
 
             _gridArray = new Cell[_xSize, _ySize];
             AddCells(_xSize, _ySize);
@@ -25,13 +27,13 @@ namespace CellsAndGrid
                 {
                     for (int y = 0; y < _ySize; y++)
                     {
-                        _gridArray[x, y] = new Cell(x, y);
+                        _gridArray[x, y] = new Cell(x, y, _gridSize);
                     }
                 }
             }
         }
 
-        public void FindCell(int findY, int findX)
+        public void FindCell(int findY, int findX, int gridSize)
         {
             foreach (Cell cell in _gridArray)
             {
@@ -39,45 +41,31 @@ namespace CellsAndGrid
                 if (findX == cell.XPosition && findY == cell.YPosition)
                 {
                     cell.Selected = true;
+                    cell.Visited = true;
                 }
+                cell.DetermineContents(findY, findX, gridSize);
             }
         }
 
         public string DrawGrid(int xSize, int ySize, int findX, int findY)
         {
             string gridString = "";
-
-            if (TestBounds(xSize, ySize, findX, findY))
+            Console.Clear();
+            int lineLength = 0;
+            foreach (Cell cell in _gridArray)
             {
-                Console.Clear();
-                int lineLength = 0;
-                foreach (Cell cell in _gridArray)
+                gridString += cell.Contents;
+                lineLength++;
+
+                if (lineLength == xSize)
                 {
-                    if (cell.Selected)
-                    {
-                        gridString += "* ";
-                        cell.Visited = true;
-                    }
-                    else
-                    {
-                        if (cell.Visited)
-                        {
-                            gridString += "  ";
-                        }
-                        else gridString += "- ";
-                    }
-                    lineLength++;
-
-                    if (lineLength == xSize)
-                    {
-                        gridString += "\n";
-                        lineLength = 0;
-                    }
+                    gridString += "\n";
+                    lineLength = 0;
                 }
-
-                gridString += "\n";
-
             }
+
+            gridString += "\n";
+            
             gridString += "Press (ESC) to exit the program or (W) to write the array to a file.";
             return gridString;
 

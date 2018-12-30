@@ -1,32 +1,38 @@
-﻿namespace CellsAndGrid
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace CellsAndGrid
 {
     class Cell
     {
-        public Cell(int x, int y)
+        public Cell(int x, int y, int gridSize)
         {
             XPosition = x;
             YPosition = y;
             Selected = false;
             Visited = false;
-            //SetNeighbors(x, y);
         }
 
-        public int XPosition { get; }
-        public int YPosition { get; }
-
-        //public int Above { get; private set; }
-        //public int ToRight { get; private set; }
-        //public int Below { get; private set; }
-        //public int ToLeft { get; private set; }
+        public int XPosition { get; set; }
+        public int YPosition { get; set; }
         public bool Selected { get; set; }
         public bool Visited { get; set; }
-
-        private void SetNeighbors(int currentX, int currentY)
+        public string Contents { get; private set; }
+        
+        public void DetermineContents(int x, int y, int grid)
         {
-            //Above = currentX - 1;
-            //ToRight = currentY + 1;
-            //Below = currentX + 1;
-            //ToLeft = currentY - 1;
+            if (Selected)
+            {
+                Contents = "* ";
+                Visited = true;
+            }
+            else
+            {
+                if (Visited)
+                {
+                    Contents = "  ";
+                }
+                else Contents = "- ";
+            }
         }
     }
 }
