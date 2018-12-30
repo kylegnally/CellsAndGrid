@@ -8,6 +8,7 @@ namespace CellsAndGrid
         private readonly int _ySize;
         private int _gridSize;
         private readonly Cell[,] _gridArray;
+        private readonly Apple[,] _appleArray;
 
         public Grid(int xSize, int ySize, int gridSize)
         {
@@ -17,6 +18,7 @@ namespace CellsAndGrid
 
             _gridArray = new Cell[_xSize, _ySize];
             AddCells(_xSize, _ySize);
+            MakeApples(_xSize, _ySize);
         }
 
         private void AddCells(int sizeX, int sizeY)
@@ -31,6 +33,11 @@ namespace CellsAndGrid
                     }
                 }
             }
+        }
+
+        private void MakeApples(int sizeX, int sizeY)
+        {
+
         }
 
         public void FindCell(int findY, int findX, int gridSize)
