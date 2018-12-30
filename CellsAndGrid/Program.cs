@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
+using System.IO;
 
 namespace CellsAndGrid
 {
@@ -35,11 +36,11 @@ namespace CellsAndGrid
 
             Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
             Console.WriteLine("\nPress an arrow key (press any other key to end):");
-            HandleDirection();
+            HandleInteraction();
 
-            void HandleDirection()
+            void HandleInteraction()
             {
-                switch (GetDirection())
+                switch (GetInteraction())
                 {
                     case ConsoleKey.UpArrow:
                         yPos--;
@@ -48,10 +49,10 @@ namespace CellsAndGrid
                         {
                             Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
                             yPos++;
-                            HandleDirection();
+                            HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        HandleDirection();
+                        HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:
                         xPos++;
@@ -60,10 +61,10 @@ namespace CellsAndGrid
                         {
                             Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
                             xPos--;
-                            HandleDirection();
+                            HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        HandleDirection();
+                        HandleInteraction();
                         break;
                     case ConsoleKey.DownArrow:
                         yPos++;
@@ -72,10 +73,10 @@ namespace CellsAndGrid
                         {
                             Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
                             yPos--;
-                            HandleDirection();
+                            HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        HandleDirection();
+                        HandleInteraction();
                         break;
                     case ConsoleKey.LeftArrow:
                         xPos--;
@@ -84,10 +85,17 @@ namespace CellsAndGrid
                         {
                             Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
                             xPos++;
-                            HandleDirection();
+                            HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        HandleDirection();
+                        HandleInteraction();
+                        break;
+                    case ConsoleKey.W:
+                        string fileToWrite = grid.DrawGrid(xSize, ySize, xPos, yPos);
+                        string path = Directory.GetCurrentDirectory();
+                        System.IO.File.WriteAllText(@path, fileToWrite);
+                        Console.WriteLine("File saved.");
+                        HandleInteraction();
                         break;
                     default:
                         Environment.Exit(0);
@@ -95,7 +103,7 @@ namespace CellsAndGrid
                 }
             }
 
-            ConsoleKey GetDirection()
+            ConsoleKey GetInteraction()
             {
                 var ch = Console.ReadKey(false).Key;
                 return ch;
