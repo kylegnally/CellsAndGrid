@@ -17,12 +17,11 @@ telling them they cannot move any further.
 
 The user is able to press the Escape key (ESC) to exit the program.
 
-## Classes
-
-# Grid
+# Classes
+## Grid
 This class models the "game board". This class fills itself with Cell objects in a two-dimensional array. 
 
-# Cell
+## Cell
 This class models a single space on the board. Each Cell has the following properties:
 
 |  Property |                   Purpose                     |
@@ -36,13 +35,13 @@ This class models a single space on the board. Each Cell has the following prope
 |           | Cell.                                         |
 | Contents  | Contains the contents of the Cell as a string.|
 
-# Apple
+## Apple
 This class will contain information about the Apples for a Snake Game. This feature is not yet implemented.
 
-# IGenericQueue
+## IGenericQueue
 An interface for a generic Queue.
 
-# GenericQueue
+## GenericQueue
 A generic queue in the style of a linked list. This will be used to add and remove segments from the snake when it eats an apple or
 hits an enemy. This feature is not yet implemented.
 
@@ -50,12 +49,12 @@ hits an enemy. This feature is not yet implemented.
 
 Since we have a Grid with Cells and a Player which can move about it
 
-## Known Problems
-# Separation of concerns 
+# Known Problems
+## Separation of concerns 
 The Grid object contains a DrawGrid function. It shouldn't. All things related to putting anything on the screen
 should properly be the concern of a user interface (which does not yet exist). Before going any further, I should create a user 
 interface class that will draw the Grid object and write all the prompts to the screen.
 
-# Write to file
+## Write to file
 The program currently prompts the user to press the W key if they wish to write the current state of the board to a file. This does
 not yet work (it crashes the program) because access is denied to the debug folder. This should be fixed ASAP.
