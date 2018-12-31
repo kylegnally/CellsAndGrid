@@ -1,5 +1,6 @@
 # CellsAndGrid
-A program to create a Grid object filled with Cell objects. Each Cell will contain a Position, Above, ToRight, Below, and ToLeft property.
+A program to create a Grid object filled with Cell objects and an icon representing the user's location on the Grid. This is slowly
+becoming a classic Snake Game.
 
 ## Author
 
