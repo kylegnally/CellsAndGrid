@@ -23,14 +23,11 @@ namespace CellsAndGrid
 
         private void AddCells(int sizeX, int sizeY)
         {
-            foreach (Cell cell in _gridArray)
+            for (int x = 0; x < _xSize; x++)
             {
-                for (int x = 0; x < _xSize; x++)
+                for (int y = 0; y < _ySize; y++)
                 {
-                    for (int y = 0; y < _ySize; y++)
-                    {
-                        _gridArray[x, y] = new Cell(x, y, _gridSize);
-                    }
+                    _gridArray[x, y] = new Cell(x, y, _gridSize);
                 }
             }
         }

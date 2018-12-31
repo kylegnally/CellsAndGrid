@@ -18,7 +18,7 @@ namespace CellsAndGrid
         public bool Selected { get; set; }
         public bool Visited { get; set; }
         public bool EdgeCell { get; set; }
-        public string Contents { get; private set; }
+        public string Contents { get; set; }
 
         // Somewhere in this class you will want to write code that will implement the GenericQueue 
         // class to create a linked list of segments that will allow each segment to "follow" the
