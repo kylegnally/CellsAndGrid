@@ -18,7 +18,6 @@ namespace CellsAndGrid
 
             _gridArray = new Cell[_xSize, _ySize];
             AddCells(_xSize, _ySize);
-            MakeApples(_xSize, _ySize);
         }
 
         private void AddCells(int sizeX, int sizeY)
@@ -30,11 +29,6 @@ namespace CellsAndGrid
                     _gridArray[x, y] = new Cell(x, y, _gridSize);
                 }
             }
-        }
-
-        private void MakeApples(int sizeX, int sizeY)
-        {
-
         }
 
         public void FindCell(int findY, int findX, int gridSize)
