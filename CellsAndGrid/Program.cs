@@ -16,17 +16,18 @@ namespace CellsAndGrid
             int ySize;
             int gridSize;
 
-            Console.WriteLine("Enter the size for each side of the grid: ");
+            UserInterface aMenu = new UserInterface();
+            Console.WriteLine(aMenu.GetGridSize());
             xSize = int.Parse(Console.ReadLine());
             ySize = xSize;
             gridSize = xSize;
             Grid grid = new Grid(xSize, ySize, gridSize);
-            Console.WriteLine("Grid created.");
+            Console.WriteLine(aMenu.GridCreatedMessage());
             Console.WriteLine();
-            Console.WriteLine("Enter the starting X coordinate: ");
+            Console.WriteLine(aMenu.GetXStartingPoint());
             int xPos = int.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Enter the starting Y coordinate: ");
+            Console.WriteLine(aMenu.GetYStartingPoint());
             int yPos = int.Parse(Console.ReadLine());
 
             xPos--;
@@ -35,7 +36,7 @@ namespace CellsAndGrid
             grid.FindCell(xPos, yPos, gridSize);
 
             Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-            Console.WriteLine("\nPress an arrow key (press any other key to end):");
+            Console.WriteLine(aMenu.PressArrowToMove());
             HandleInteraction();
 
             void HandleInteraction()
