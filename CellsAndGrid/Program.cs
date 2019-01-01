@@ -46,49 +46,53 @@ namespace CellsAndGrid
                     case ConsoleKey.UpArrow:
                         yPos--;
                         grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        if (grid.TestBounds(xPos, yPos, gridSize))
                         {
-                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
                             yPos++;
                             HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:
                         xPos++;
                         grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        if (grid.TestBounds(xPos, yPos, gridSize))
                         {
-                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
                             xPos--;
                             HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.DownArrow:
                         yPos++;
                         grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        if (grid.TestBounds(xPos, yPos, gridSize))
                         {
-                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
                             yPos--;
                             HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.LeftArrow:
                         xPos--;
                         grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize) != "")
+                        if (grid.TestBounds(xPos, yPos, gridSize))
                         {
-                            Console.WriteLine(grid.TestBounds(xPos, yPos, gridSize));
+                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
                             xPos++;
                             HandleInteraction();
                         }
                         Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.W:

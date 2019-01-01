@@ -22,9 +22,9 @@ namespace CellsAndGrid
 
         private void AddCells(int sizeX, int sizeY)
         {
-            for (int x = 0; x < _xSize; x++)
+            for (int x = 0; x < sizeX; x++)
             {
-                for (int y = 0; y < _ySize; y++)
+                for (int y = 0; y < sizeY; y++)
                 {
                     _gridArray[x, y] = new Cell(x, y, _gridSize);
                 }
@@ -62,22 +62,14 @@ namespace CellsAndGrid
                 }
             }
 
-            gridString += "\n";
-            
-            gridString += "Press (ESC) to exit the program or (W) to write the array to a file.";
             return gridString;
-
         }
 
-        public string TestBounds(int findX, int findY, int gridSize)
+        public bool TestBounds(int findX, int findY, int gridSize)
         {
-            string edgeString = "";
-            if (_gridArray[findX, findY].EdgeCell)
-            {
-                edgeString = "\nYou have struck a wall and cannot move further in that direction.";
-            }
+            bool isEdge = _gridArray[findX, findY].EdgeCell;
 
-            return edgeString;
+            return isEdge;
         }
     }
 }
