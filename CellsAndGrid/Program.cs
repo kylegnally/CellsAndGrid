@@ -95,13 +95,13 @@ namespace CellsAndGrid
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
-                    //case ConsoleKey.W:
-                    //    string fileToWrite = grid.DrawGrid(xSize, ySize, xPos, yPos);
-                    //    string path = Directory.GetCurrentDirectory();
-                    //    System.IO.File.WriteAllText(@path, fileToWrite);
-                    //    Console.WriteLine("File saved.");
-                    //    HandleInteraction();
-                    //    break;
+                    case ConsoleKey.W:
+                        string fileToWrite = grid.DrawGrid(xSize, ySize, xPos, yPos);
+                        string path = Directory.GetCurrentDirectory();
+                        System.IO.File.WriteAllText(@path, fileToWrite);
+                        Console.WriteLine("File saved.");
+                        HandleInteraction();
+                        break;
                     default:
                         Environment.Exit(0);
                         break;
