@@ -22,16 +22,10 @@ namespace CellsAndGrid
         protected int size = 0;
 
         // return null if the queue is empty
-        public bool IsEmpty
-        {
-            get { return head == null; }
-        }
+        public bool IsEmpty => head == null;
 
         // size property
-        public int Size
-        {
-            get { return size; }
-        }
+        public int Size => size;
 
         /// <summary>
         /// Method to enqueue an item of generic type Data onto the queue

@@ -8,19 +8,52 @@ namespace CellsAndGrid
 {
     class Apple
     {
-        private string _apple = "o";
+        //private string _appleString;
         private int _nutrition = 1;
+        //private int _randomSeeder;
+        //private int _qubit;
+        private bool _appleExists;
+        private static int _applesIntended;
 
-        public Apple()
+        public static int ApplesIntended()
         {
-            AnApple = _apple;
-            Nutrition = _nutrition;
+            return _applesIntended;
         }
 
-        public string AnApple
+        public static int ApplesIntended(bool removeApple)
         {
-            get => _apple;
-            set => _apple = value;
+            _applesIntended--;
+            return _applesIntended;
+        }
+
+
+        public Apple(Random rand)
+        {
+            _appleExists = false;
+            Nutrition = _nutrition;
+            PickApple(rand);
+        }
+
+        private void PickApple(Random rand)
+        {
+            int appleSeed = rand.Next(0, 10);
+            
+            if (appleSeed / 2 == 2)
+            {
+                _appleExists = true;
+                _applesIntended++;
+            }
+            else _appleExists = false;
+        }
+
+        public bool AppleExists
+        {
+            get
+            {
+                if (_appleExists) return true;
+                return false;
+            }
+            set => _appleExists = value;
         }
 
         public int Nutrition

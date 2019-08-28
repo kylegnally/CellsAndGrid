@@ -35,7 +35,7 @@ namespace CellsAndGrid
 
             grid.FindCell(xPos, yPos, gridSize);
 
-            Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+            Console.Write(grid.DrawGrid(xSize, ySize, xPos, gridSize));
             Console.WriteLine(aMenu.PressArrowToMove());
             HandleInteraction();
 
@@ -45,58 +45,24 @@ namespace CellsAndGrid
                 {
                     case ConsoleKey.UpArrow:
                         yPos--;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            yPos++;
-                            HandleInteraction();
-                        }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        Console.WriteLine(aMenu.PressArrowToMove());
-                        HandleInteraction();
+                        DoMove();
                         break;
                     case ConsoleKey.RightArrow:
                         xPos++;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            xPos--;
-                            HandleInteraction();
-                        }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        Console.WriteLine(aMenu.PressArrowToMove());
-                        HandleInteraction();
+                        DoMove();
                         break;
                     case ConsoleKey.DownArrow:
                         yPos++;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            yPos--;
-                            HandleInteraction();
-                        }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        Console.WriteLine(aMenu.PressArrowToMove());
-                        HandleInteraction();
+                        DoMove();
                         break;
                     case ConsoleKey.LeftArrow:
                         xPos--;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            xPos++;
-                            HandleInteraction();
-                        }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
-                        Console.WriteLine(aMenu.PressArrowToMove());
-                        HandleInteraction();
+                        DoMove();
                         break;
                     case ConsoleKey.W:
                         string fileToWrite = grid.DrawGrid(xSize, ySize, xPos, yPos);
+                        Console.WriteLine("\nThere are " + grid.ApplesOnGrid + "apples on the grid,");
+
                         string path = Directory.GetCurrentDirectory();
                         System.IO.File.WriteAllText(@path, fileToWrite);
                         Console.WriteLine("File saved.");
@@ -106,6 +72,27 @@ namespace CellsAndGrid
                         Environment.Exit(0);
                         break;
                 }
+            }
+
+            void DoMove()
+            {
+                grid.FindCell(xPos, yPos, gridSize);
+                if (grid.TestBounds(xPos, yPos, gridSize))
+                {
+                    Console.WriteLine(aMenu.CannotMoveIntoWalls());
+                    yPos++;
+                    HandleInteraction();
+                }
+                else DrawAndMoveActions();
+            }
+
+            void DrawAndMoveActions()
+            {
+                Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                Console.WriteLine(aMenu.PressArrowToMove());
+                Console.WriteLine("\nThere are " + grid.ApplesOnGrid + " apples on the grid.");
+                Console.WriteLine("This iteration of Creation should have produced " + Apple.ApplesIntended() + " apples.");
+                HandleInteraction();
             }
 
             ConsoleKey GetInteraction()

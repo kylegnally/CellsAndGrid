@@ -45,5 +45,10 @@ namespace CellsAndGrid
         {
             return _returnString = "Press an arrow key to move around the grid. Press the Escape key (ESC) to exit.";
         }
+
+        public string SaySomethingDammit()
+        {
+            return _returnString = "This question must have an answer in the form of an integer (a whole number) for this universe to exist.";
+        }
     }
 }

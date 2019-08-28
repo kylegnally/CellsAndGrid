@@ -8,7 +8,11 @@ namespace CellsAndGrid
         private readonly int _ySize;
         private int _gridSize;
         private readonly Cell[,] _gridArray;
-        private readonly Apple[,] _appleArray;
+        //private readonly Apple[,] _appleArray;
+
+        private int _applesOnGrid;
+
+        public int ApplesOnGrid { get; set; }
 
         public Grid(int xSize, int ySize, int gridSize)
         {
@@ -52,7 +56,15 @@ namespace CellsAndGrid
             int lineLength = 0;
             foreach (Cell cell in _gridArray)
             {
+
+                if (cell.HasApple && !cell.EdgeCell)
+                {
+                    cell.Contents = "o ";
+                    _applesOnGrid++;
+                }
+                ApplesOnGrid = _applesOnGrid;
                 gridString += cell.Contents;
+
                 lineLength++;
 
                 if (lineLength == xSize)
@@ -68,7 +80,6 @@ namespace CellsAndGrid
         public bool TestBounds(int findX, int findY, int gridSize)
         {
             bool isEdge = _gridArray[findX, findY].EdgeCell;
-
             return isEdge;
         }
     }
