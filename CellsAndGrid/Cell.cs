@@ -53,11 +53,7 @@ namespace CellsAndGrid
         }
         public string Contents { get; set; }
 
-        public bool HasApple
-        {
-            get => _appleBlossom.AppleExists;
-            set => _appleBlossom.AppleExists = value;
-        }
+        public bool HasApple { get; set; }
 
         public static string[] ApplesOnGrid { get; set; }
 

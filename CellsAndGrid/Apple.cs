@@ -58,6 +58,7 @@ namespace CellsAndGrid
                 _applesIntended++;
                 _appleTruthArray[counter] = true;
                 counter++;
+                //AppleExists = true;
                 return true;
              }
              return false;

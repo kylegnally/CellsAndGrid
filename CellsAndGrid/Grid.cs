@@ -59,11 +59,11 @@ namespace CellsAndGrid
             foreach (Cell cell in _gridArray)
             {
 
-                if (cell.HasApple && !cell.EdgeCell)
-                {
-                    cell.Contents = "o ";
-                    _applesOnGrid++;
-                }
+                //if (cell.HasApple && !cell.EdgeCell)
+                //{
+                //    cell.Contents = "o ";
+                //    _applesOnGrid++;
+                //}
                 ApplesOnGrid = _applesOnGrid;
                 gridString += cell.Contents;
 
