@@ -91,7 +91,13 @@ namespace CellsAndGrid
                 Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
                 Console.WriteLine(aMenu.PressArrowToMove());
                 Console.WriteLine("\nThere are " + grid.ApplesOnGrid + " apples on the grid.");
-                Console.WriteLine("This iteration of Creation should have produced " + Apple.ApplesIntended() + " apples.");
+                Console.WriteLine("This iteration of Creation should have produced " + Apple.ApplesIntended + " apples.");
+                int appleTruth = 0;
+                foreach (bool truth in Apple.AppleTruthArray)
+                {
+                    appleTruth++;
+                }
+                Console.WriteLine("The Apple Truth Array shows a true count of " + appleTruth + " apples.");
                 HandleInteraction();
             }
 

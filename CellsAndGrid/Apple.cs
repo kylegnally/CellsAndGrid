@@ -10,56 +10,62 @@ namespace CellsAndGrid
     {
         //private string _appleString;
         private int _nutrition = 1;
+        private static int counter;
         //private int _randomSeeder;
         //private int _qubit;
-        private bool _appleExists;
+        //private bool _appleExists;
         private static int _applesIntended;
+        private static bool[] _appleTruthArray;
 
-        public static int ApplesIntended()
-        {
-            return _applesIntended;
-        }
-
-        public static int ApplesIntended(bool removeApple)
+        public static int RemoveAnApple(bool removeApple)
         {
             _applesIntended--;
             return _applesIntended;
         }
 
-
-        public Apple(Random rand)
-        {
-            _appleExists = false;
-            Nutrition = _nutrition;
-            PickApple(rand);
-        }
-
-        private void PickApple(Random rand)
-        {
-            int appleSeed = rand.Next(0, 10);
-            
-            if (appleSeed / 2 == 2)
-            {
-                _appleExists = true;
-                _applesIntended++;
-            }
-            else _appleExists = false;
-        }
-
-        public bool AppleExists
-        {
-            get
-            {
-                if (_appleExists) return true;
-                return false;
-            }
-            set => _appleExists = value;
-        }
+        public bool AppleExists { get; set; }
 
         public int Nutrition
         {
             get => _nutrition;
             private set => _nutrition = value;
+        }
+
+        public static bool[] AppleTruthArray { get; set; }
+        public Apple(Random rand)
+        {
+            if (_appleTruthArray == null)
+            {
+                _appleTruthArray = new bool[2000];
+            }
+            else AppleTruthArray = _appleTruthArray;
+            //GrowAnApple(rand);
+            if (GrowAnApple(rand)) AppleExists = true;
+            ApplesIntended = _applesIntended;
+            Nutrition = _nutrition;
+            //AppleExists = GrowAnApple(rand); 
+            //AppleExists = _appleExists;
+        }
+
+        private bool GrowAnApple(Random rand)
+        {
+            AppleExists = false;
+            //int[] desiredAppleSeedArray = {2};
+            int appleSeed = rand.Next(0, 10);
+            
+             if (appleSeed % 3 == 0)
+             {
+                _applesIntended++;
+                _appleTruthArray[counter] = true;
+                counter++;
+                return true;
+             }
+             return false;
+        }
+        public static int ApplesIntended
+        {
+            get => _applesIntended;
+            set => _applesIntended = value;
         }
     }
 }

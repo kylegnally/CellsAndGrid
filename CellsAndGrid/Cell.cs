@@ -6,7 +6,7 @@ namespace CellsAndGrid
     class Cell
     {
         //private string _contentCheck;
-        private readonly Apple _appleBlossom;
+        private Apple _appleBlossom;
 
         //private static string[] _applesOnGrid;
         private static int _counter;
@@ -22,7 +22,7 @@ namespace CellsAndGrid
             YPosition = y;
             GridSize = gridSize;
             Selected = false;
-            Visited = false;
+            Visited = Visited;
             EdgeCell = TestForEdge(x, y, gridSize);
         }
 
@@ -30,6 +30,7 @@ namespace CellsAndGrid
         public int YPosition { get; set; }
         public int GridSize { get; set; }
         public bool Selected { get; set; }
+
         public bool Visited { get; set; }
 
         public bool EdgeCell
@@ -75,8 +76,8 @@ namespace CellsAndGrid
                     Contents = "% ";
                 //else if (!Visited && !EdgeCell /*&& _appleBlossom.AppleExists*/)
                 //    Contents = "  ";
-                else
-                    Contents = "- ";
+                else if (HasApple) Contents = "o ";
+                else Contents = "- ";
 
                 //if (Contents == "o ") ApplesOnGrid[_counter] = Contents;
                 //_counter++;
@@ -112,7 +113,7 @@ namespace CellsAndGrid
         //    {
         //        Contents = "% ";
         //        HasApple = false;
-        //        Apple.ApplesIntended(HasApple);
+        //        Apple.RemoveAnApple(HasApple);
         //    }
         //}
 

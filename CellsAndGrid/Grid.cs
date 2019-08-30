@@ -7,7 +7,7 @@ namespace CellsAndGrid
         private readonly int _xSize;
         private readonly int _ySize;
         private int _gridSize;
-        private readonly Cell[,] _gridArray;
+        private Cell[,] _gridArray;
         //private readonly Apple[,] _appleArray;
 
         private int _applesOnGrid;
@@ -20,8 +20,8 @@ namespace CellsAndGrid
             _ySize = ySize;
             _gridSize = gridSize;
 
-            _gridArray = new Cell[_xSize, _ySize];
-            AddCells(_xSize, _ySize);
+            _gridArray = new Cell[_xSize, _ySize]; 
+            AddCells(_xSize, _ySize);  // NO!!! Do this in Cell.ACell()
         }
 
         private void AddCells(int sizeX, int sizeY)
@@ -30,7 +30,9 @@ namespace CellsAndGrid
             {
                 for (int y = 0; y < sizeY; y++)
                 {
-                    _gridArray[x, y] = new Cell(x, y, _gridSize);
+                    _gridArray[x, y] = new Cell(x, y, _gridSize); // NO!!! This should be
+                                                                    // handled in the Cell
+                                                                    // class too
                 }
             }
         }
