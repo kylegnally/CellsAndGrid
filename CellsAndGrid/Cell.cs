@@ -5,10 +5,7 @@ namespace CellsAndGrid
 {
     class Cell
     {
-        //private string _contentCheck;
-
         private static int _counter;
-        //private bool _edge;
         public Cell(int x, int y, int gridSize)
         {
             var rand = new Random();
