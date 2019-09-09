@@ -6,9 +6,7 @@ namespace CellsAndGrid
     class Cell
     {
         //private string _contentCheck;
-        private Apple _appleBlossom;
 
-        //private static string[] _applesOnGrid;
         private static int _counter;
         //private bool _edge;
         public Cell(int x, int y, int gridSize)
@@ -16,8 +14,6 @@ namespace CellsAndGrid
             var rand = new Random();
 
             ApplesOnGrid = new string[2000];
-            _appleBlossom = new Apple(rand);
-            HasApple = _appleBlossom.AppleExists;
             XPosition = x;
             YPosition = y;
             GridSize = gridSize;
