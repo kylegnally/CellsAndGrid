@@ -10,7 +10,7 @@ namespace CellsAndGrid
         {
             var rand = new Random();
 
-            ApplesOnGrid = new string[2000];
+            //ApplesOnGrid = new string[2000];
             XPosition = x;
             YPosition = y;
             GridSize = gridSize;
@@ -46,9 +46,9 @@ namespace CellsAndGrid
         }
         public string Contents { get; set; }
 
-        public bool HasApple { get; set; }
+        //public bool HasApple { get; set; }
 
-        public static string[] ApplesOnGrid { get; set; }
+        //public static string[] ApplesOnGrid { get; set; }
 
         public void DetermineContents(int x, int y, int grid)
         {
@@ -65,7 +65,7 @@ namespace CellsAndGrid
                     Contents = "% ";
                 //else if (!Visited && !EdgeCell /*&& _appleBlossom.AppleExists*/)
                 //    Contents = "  ";
-                else if (HasApple) Contents = "o ";
+                //else if (HasApple) Contents = "o ";
                 else Contents = "- ";
 
                 //if (Contents == "o ") ApplesOnGrid[_counter] = Contents;
