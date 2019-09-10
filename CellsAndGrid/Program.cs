@@ -21,6 +21,7 @@ namespace CellsAndGrid
             xSize = int.Parse(Console.ReadLine());
             ySize = xSize;
             gridSize = xSize;
+
             Grid grid = new Grid(xSize, ySize, gridSize);
             Console.WriteLine(aMenu.GridCreatedMessage());
             Console.WriteLine();
@@ -32,6 +33,7 @@ namespace CellsAndGrid
 
             xPos--;
             yPos--;
+            GameManager gameManager = new GameManager(gridSize, xPos, yPos);
 
             grid.FindCell(xPos, yPos, gridSize);
 
