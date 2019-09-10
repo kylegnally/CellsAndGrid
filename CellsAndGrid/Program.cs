@@ -33,7 +33,7 @@ namespace CellsAndGrid
 
             xPos--;
             yPos--;
-            GameManager gameManager = new GameManager(gridSize, xPos, yPos);
+            GameManager gameManager = new GameManager(xPos, yPos, gridSize);
 
             grid.FindCell(xPos, yPos, gridSize);
 

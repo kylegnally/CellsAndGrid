@@ -2,7 +2,7 @@
 
 namespace CellsAndGrid
 {
-    class Grid : Gam
+    class Grid : GameManager
     {
         private readonly int _xSize;
         private readonly int _ySize;
@@ -14,7 +14,7 @@ namespace CellsAndGrid
 
         public int ApplesOnGrid { get; set; }
 
-        public Grid(int xSize, int ySize, int gridSize)
+        public Grid(int xSize, int ySize, int gridSize) : base(xSize, ySize, gridSize)
         {
             _xSize = xSize;
             _ySize = ySize;
@@ -39,7 +39,7 @@ namespace CellsAndGrid
 
         public void FindCell(int findY, int findX, int gridSize)
         {
-            foreach (Cell cell in _gridArray)
+            foreach (Cell cell in CellGrid)
             {
                 cell.Selected = false;
                 if (findX == cell.XPosition && findY == cell.YPosition)
@@ -56,7 +56,7 @@ namespace CellsAndGrid
             string gridString = "";
             Console.Clear();
             int lineLength = 0;
-            foreach (Cell cell in _gridArray)
+            foreach (Cell cell in CellGrid)
             {
 
                 //if (cell.HasApple && !cell.EdgeCell)
@@ -64,7 +64,7 @@ namespace CellsAndGrid
                 //    cell.Contents = "o ";
                 //    _applesOnGrid++;
                 //}
-                ApplesOnGrid = _applesOnGrid;
+                //ApplesOnGrid = _applesOnGrid;
                 gridString += cell.Contents;
 
                 lineLength++;
@@ -81,7 +81,7 @@ namespace CellsAndGrid
 
         public bool TestBounds(int findX, int findY, int gridSize)
         {
-            bool isEdge = _gridArray[findX, findY].EdgeCell;
+            bool isEdge = CellGrid[findX, findY].EdgeCell;
             return isEdge;
         }
     }

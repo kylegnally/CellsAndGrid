@@ -25,11 +25,12 @@ namespace CellsAndGrid
         public Player ThePlayer { get; set; }
         public Cell SingleCell { get; set; }
 
-        public GameManager(int gridSize, int xStart, int yStart)
+        public GameManager(int xStart, int yStart, int gridSize)
         {
-            GridSize = gridSize;
             XPosition = xStart;
             YPosition = yStart;
+            GridSize = gridSize;
+
             CellGrid = new Cell[GridSize, GridSize];
             MakeGrid(GridSize);
         }
