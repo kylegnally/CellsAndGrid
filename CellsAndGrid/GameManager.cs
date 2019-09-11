@@ -25,7 +25,7 @@ namespace CellsAndGrid
         public Player ThePlayer { get; set; }
         public Cell SingleCell { get; set; }
 
-        public GameManager(int xStart, int yStart, int gridSize)
+        public GameManager(int xStart, int yStart, int gridSize) // refactor to just int x and int y?
         {
             XPosition = xStart;
             YPosition = yStart;
