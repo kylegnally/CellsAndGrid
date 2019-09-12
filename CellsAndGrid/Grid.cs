@@ -7,35 +7,13 @@ namespace CellsAndGrid
         private readonly int _xSize;
         private readonly int _ySize;
         private int _gridSize;
-        //private Cell[,] _gridArray;
-        //private readonly Apple[,] _appleArray;
-
-        private int _applesOnGrid;
-
-        public int ApplesOnGrid { get; set; }
 
         public Grid(int xSize, int ySize, int gridSize) : base(xSize, ySize, gridSize)
         {
             _xSize = xSize;
             _ySize = ySize;
             _gridSize = gridSize;
-
-            //_gridArray = new Cell[_xSize, _ySize]; 
-            //AddCells(_xSize, _ySize);  // NO!!! Do this in Cell.ACell()
         }
-
-        //private void AddCells(int sizeX, int sizeY)
-        //{
-        //    for (int x = 0; x < sizeX; x++)
-        //    {
-        //        for (int y = 0; y < sizeY; y++)
-        //        {
-        //            _gridArray[x, y] = new Cell(x, y, _gridSize); // NO!!! This should be
-        //                                                            // handled in the Cell
-        //                                                            // class too
-        //        }
-        //    }
-        //}
 
         public void FindCell(int findY, int findX, int gridSize)
         {
@@ -58,13 +36,6 @@ namespace CellsAndGrid
             int lineLength = 0;
             foreach (Cell cell in CellGrid)
             {
-
-                //if (cell.HasApple && !cell.EdgeCell)
-                //{
-                //    cell.Contents = "o ";
-                //    _applesOnGrid++;
-                //}
-                //ApplesOnGrid = _applesOnGrid;
                 gridString += cell.Contents;
 
                 lineLength++;

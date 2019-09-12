@@ -13,7 +13,7 @@ namespace CellsAndGrid
         private int _yPosition;
 
         private Grid _grid;
-        private Player _player;
+        //private Player _player;
         private Cell _oneCell;
 
         public int XPosition { get; set; }
@@ -31,11 +31,12 @@ namespace CellsAndGrid
             YPosition = yStart;
             GridSize = gridSize;
 
+            ThePlayer = new Player();
             CellGrid = new Cell[GridSize, GridSize];
-            MakeGrid(GridSize);
+            InitGrid(GridSize);
         }
 
-        public Cell[,] MakeGrid(int size)
+        public Cell[,] InitGrid(int size)
         {
             for (int x = 0; x < GridSize; x++)
             {

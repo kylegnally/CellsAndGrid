@@ -10,7 +10,6 @@ namespace CellsAndGrid
         {
             var rand = new Random();
 
-            //ApplesOnGrid = new string[2000];
             XPosition = x;
             YPosition = y;
             GridSize = gridSize;
@@ -26,30 +25,9 @@ namespace CellsAndGrid
 
         public bool Visited { get; set; }
 
-        public bool EdgeCell
-        {
-            get;
-            set;
-
-            //{
-            //    _edge = value;
-            //    //    if ((YPosition == 0 || 
-            //    //        XPosition == 0 || 
-            //    //        XPosition == GridSize - 1 || 
-            //    //        YPosition == GridSize - 1) && (HasApple))
-            //    //    {
-            //    //        OneBadApple();
-            //    //    }
-
-            //    //    HasApple = value;
-            //}
-        }
+        public bool EdgeCell { get; set; }
         public string Contents { get; set; }
-
-        //public bool HasApple { get; set; }
-
-        //public static string[] ApplesOnGrid { get; set; }
-
+        
         public void DetermineContents(int x, int y, int grid)
         {
             if (Selected)
@@ -59,52 +37,19 @@ namespace CellsAndGrid
             }
             else
             {
-                if (Visited && !EdgeCell /*&& !_appleBlossom.AppleExists*/)
+                if (Visited && !EdgeCell)
                     Contents = "  ";
-                else if (EdgeCell /*&& !_appleBlossom.AppleExists*/)
+                else if (EdgeCell)
                     Contents = "% ";
-                //else if (!Visited && !EdgeCell /*&& _appleBlossom.AppleExists*/)
-                //    Contents = "  ";
-                //else if (HasApple) Contents = "o ";
                 else Contents = "- ";
-
-                //if (Contents == "o ") ApplesOnGrid[_counter] = Contents;
-                //_counter++;
             }
-            //_contentCheck = Contents;
         }
 
         public bool TestForEdge(int x, int y, int size)
         {
             if (y == 0 || x == 0 || x == size - 1 || y == size - 1) return true;
             return false;
-
-
-            //if (x == 0)
-            //{
-            //    EdgeCell = true;
-            //}
-
-            //if (x == size - 1)
-            //{
-            //    EdgeCell = true;
-            //}
-
-            //if (y == size - 1)
-            //{
-            //    EdgeCell = true;
-            //}
         }
-
-        //private void OneBadApple()
-        //{
-        //    if (HasApple && EdgeCell)
-        //    {
-        //        Contents = "% ";
-        //        HasApple = false;
-        //        Apple.RemoveAnApple(HasApple);
-        //    }
-        //}
 
         // Somewhere in this class you will want to write code that will implement the GenericQueue 
         // class to create a linked list of segments that will allow each segment to "follow" the
@@ -128,6 +73,5 @@ namespace CellsAndGrid
         // possibility of getting the coordinate determination algorithm wrong (because that wouldn't 
         // be necessary). Since programmers (+me) are lazy the keystroke method is the path of least
         // resistance.
-
     }
 }
