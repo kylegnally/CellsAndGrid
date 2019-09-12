@@ -20,6 +20,8 @@ namespace CellsAndGrid
         public int YPosition { get; set; }
         public int GridSize { get; set; }
 
+        public string Playfield { get; set; }
+
         public Grid GridObject { get; set; }
         public Cell[,] CellGrid { get; set; }
         public Player ThePlayer { get; set; }
@@ -36,17 +38,53 @@ namespace CellsAndGrid
             InitGrid(GridSize);
         }
 
-        public Cell[,] InitGrid(int size)
+        //public int[] FindPlayer(int x, int y)
+        //{
+
+        //}
+        protected Cell[,] InitGrid(int size)
         {
             for (int x = 0; x < GridSize; x++)
             {
                 for (int y = 0; y < GridSize; y++)
                 {
-                    CellGrid[x, y] = new Cell(x, y, GridSize); 
+                    CellGrid[x, y] = new Cell(x, y, GridSize);
+                    if (x == 0 || x == GridSize) CellGrid[x, y].EdgeCell = true;
+                    if (y == 0 || y == GridSize) CellGrid[x, y].EdgeCell = true;
+                }
+            }
+            FillCells();
+            return CellGrid;
+        }
+
+        private void FillCells()
+        {
+            foreach (Cell cell in CellGrid)
+            {
+                cell.Contents = "- ";
+                if (cell.EdgeCell) cell.Contents = "% ";
+                if (ThePlayer.Position[0] == cell.XPosition && ThePlayer.Position[1] == cell.YPosition) cell.Contents = "* ";
+            }
+        }
+        public string DrawPlayfield()
+        {
+            Playfield = null;
+            Console.Clear();
+            int lineLength = 0;
+            foreach (Cell cell in CellGrid)
+            {
+                Playfield += cell.Contents;
+
+                lineLength++;
+
+                if (lineLength == GridSize)
+                {
+                    Playfield += "\n";
+                    lineLength = 0;
                 }
             }
 
-            return CellGrid;
+            return Playfield;
         }
     }
 }

@@ -13,8 +13,8 @@
             if (Position == null)
             {
                 Position = new int[2];
-                startX = Position[0];
-                startY = Position[1];
+                Position[0] = startX;
+                Position[1] = startY;
             }
         }
 

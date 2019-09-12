@@ -29,27 +29,6 @@ namespace CellsAndGrid
             }
         }
 
-        public string DrawGrid(int xSize, int ySize, int findX, int findY)
-        {
-            string gridString = "";
-            Console.Clear();
-            int lineLength = 0;
-            foreach (Cell cell in CellGrid)
-            {
-                gridString += cell.Contents;
-
-                lineLength++;
-
-                if (lineLength == xSize)
-                {
-                    gridString += "\n";
-                    lineLength = 0;
-                }
-            }
-
-            return gridString;
-        }
-
         public bool TestBounds(int findX, int findY, int gridSize)
         {
             bool isEdge = CellGrid[findX, findY].EdgeCell;

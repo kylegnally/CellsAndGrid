@@ -35,9 +35,8 @@ namespace CellsAndGrid
             yPos--;
             GameManager gameManager = new GameManager(xPos, yPos, gridSize);
 
-            grid.FindCell(xPos, yPos, gridSize);
-
-            Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+            //Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+            Console.Write(gameManager.DrawPlayfield());
             Console.WriteLine(aMenu.PressArrowToMove());
             HandleInteraction();
 
@@ -46,61 +45,61 @@ namespace CellsAndGrid
                 switch (GetInteraction())
                 {
                     case ConsoleKey.UpArrow:
-                        yPos--;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
+                        gameManager.ThePlayer.Position[1]--;
+                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
+                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
                         {
                             Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            yPos++;
+                            gameManager.ThePlayer.Position[1]++;
                             HandleInteraction();
                         }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:
-                        xPos++;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
+                        gameManager.ThePlayer.Position[0]++;
+                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
+                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
                         {
                             Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            xPos--;
+                            gameManager.ThePlayer.Position[0]--;
                             HandleInteraction();
                         }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.DownArrow:
-                        yPos++;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
+                        gameManager.ThePlayer.Position[1]++;
+                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize); ;
+                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
                         {
                             Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            yPos--;
+                            gameManager.ThePlayer.Position[1]--;
                             HandleInteraction();
                         }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.LeftArrow:
-                        xPos--;
-                        grid.FindCell(xPos, yPos, gridSize);
-                        if (grid.TestBounds(xPos, yPos, gridSize))
+                        gameManager.ThePlayer.Position[0]--;
+                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
+                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
                         {
                             Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            xPos++;
+                            gameManager.ThePlayer.Position[0]++;
                             HandleInteraction();
                         }
-                        Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
+                        Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.W:
-                        string fileToWrite = grid.DrawGrid(xSize, ySize, xPos, yPos);
+                        //string fileToWrite = gameManager.DrawPlayfield();
                         string path = Directory.GetCurrentDirectory();
-                        System.IO.File.WriteAllText(@path, fileToWrite);
+                        System.IO.File.WriteAllText(@path, gameManager.DrawPlayfield());
                         Console.WriteLine("File saved.");
                         HandleInteraction();
                         break;
