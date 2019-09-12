@@ -31,7 +31,7 @@ namespace CellsAndGrid
             YPosition = yStart;
             GridSize = gridSize;
 
-            ThePlayer = new Player();
+            ThePlayer = new Player(xStart, yStart);
             CellGrid = new Cell[GridSize, GridSize];
             InitGrid(GridSize);
         }
