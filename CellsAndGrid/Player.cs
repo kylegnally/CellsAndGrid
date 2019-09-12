@@ -18,7 +18,7 @@
             }
         }
 
-        public bool DoPlayerMove(Cell source, Cell target)
+        public bool MovePlayer()
         {
             return true;
         }

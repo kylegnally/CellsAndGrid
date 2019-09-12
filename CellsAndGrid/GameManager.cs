@@ -49,8 +49,8 @@ namespace CellsAndGrid
                 for (int y = 0; y < GridSize; y++)
                 {
                     CellGrid[x, y] = new Cell(x, y, GridSize);
-                    if (x == 0 || x == GridSize) CellGrid[x, y].EdgeCell = true;
-                    if (y == 0 || y == GridSize) CellGrid[x, y].EdgeCell = true;
+                    if (x == 0 || x == GridSize) CellGrid[x, y].IsEdge = true;
+                    if (y == 0 || y == GridSize) CellGrid[x, y].IsEdge = true;
                 }
             }
             FillCells();
@@ -61,9 +61,10 @@ namespace CellsAndGrid
         {
             foreach (Cell cell in CellGrid)
             {
-                cell.Contents = "- ";
-                if (cell.EdgeCell) cell.Contents = "% ";
-                if (ThePlayer.Position[0] == cell.XPosition && ThePlayer.Position[1] == cell.YPosition) cell.Contents = "* ";
+                cell.CellContents = "- ";
+                if (cell.IsEdge) cell.CellContents = "% ";
+                if (ThePlayer.Position[0] == cell.XPosition && ThePlayer.Position[1] == cell.YPosition)
+                    cell.ContainsPlayer = true;
             }
         }
         public string DrawPlayfield()
@@ -73,7 +74,8 @@ namespace CellsAndGrid
             int lineLength = 0;
             foreach (Cell cell in CellGrid)
             {
-                Playfield += cell.Contents;
+                if (cell.ContainsPlayer) cell.CellContents = "* ";
+                Playfield += cell.CellContents;
 
                 lineLength++;
 

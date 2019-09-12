@@ -13,35 +13,35 @@ namespace CellsAndGrid
             XPosition = x;
             YPosition = y;
             GridSize = gridSize;
-            Selected = false;
-            Visited = Visited;
-            EdgeCell = TestForEdge(x, y, gridSize);
+            ContainsPlayer = false;
+            WasVisited = WasVisited;
+            IsEdge = TestForEdge(x, y, gridSize);
         }
 
         public int XPosition { get; set; }
         public int YPosition { get; set; }
         public int GridSize { get; set; }
-        public bool Selected { get; set; }
+        public bool ContainsPlayer { get; set; }
 
-        public bool Visited { get; set; }
+        public bool WasVisited { get; set; }
 
-        public bool EdgeCell { get; set; }
-        public string Contents { get; set; }
+        public bool IsEdge { get; set; }
+        public string CellContents { get; set; }
         
         public void DetermineContents(int x, int y, int grid)
         {
-            if (Selected)
+            if (ContainsPlayer)
             {
-                Contents = "* ";
-                Visited = true;
+                CellContents = "* ";
+                WasVisited = true;
             }
             else
             {
-                if (Visited && !EdgeCell)
-                    Contents = "  ";
-                else if (EdgeCell)
-                    Contents = "% ";
-                else Contents = "- ";
+                if (WasVisited && !IsEdge)
+                    CellContents = "  ";
+                else if (IsEdge)
+                    CellContents = "% ";
+                else CellContents = "- ";
             }
         }
 

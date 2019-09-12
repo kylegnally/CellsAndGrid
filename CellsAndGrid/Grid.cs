@@ -19,11 +19,11 @@ namespace CellsAndGrid
         {
             foreach (Cell cell in CellGrid)
             {
-                cell.Selected = false;
+                cell.ContainsPlayer = false;
                 if (findX == cell.XPosition && findY == cell.YPosition)
                 {
-                    cell.Selected = true;
-                    cell.Visited = true;
+                    cell.ContainsPlayer = true;
+                    cell.WasVisited = true;
                 }
                 cell.DetermineContents(findY, findX, gridSize);
             }
@@ -31,7 +31,7 @@ namespace CellsAndGrid
 
         public bool TestBounds(int findX, int findY, int gridSize)
         {
-            bool isEdge = CellGrid[findX, findY].EdgeCell;
+            bool isEdge = CellGrid[findX, findY].IsEdge;
             return isEdge;
         }
     }
