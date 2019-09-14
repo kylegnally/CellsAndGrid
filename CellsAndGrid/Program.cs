@@ -45,62 +45,62 @@ namespace CellsAndGrid
                 switch (GetInteraction())
                 {
                     case ConsoleKey.UpArrow:
-                        gameManager.ThePlayer.Position[1]--;
-                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
-                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            gameManager.ThePlayer.Position[1]++;
-                            HandleInteraction();
-                        }
+                        //gameManager.ThePlayer.Position[1]--;
+                        //grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
+                        //if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
+                        //{
+                        //    Console.WriteLine(aMenu.CannotMoveIntoWalls());
+                        //    gameManager.ThePlayer.Position[1]++;
+                        //    HandleInteraction();
+                        //}
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:
-                        gameManager.ThePlayer.Position[0]++;
-                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
-                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            gameManager.ThePlayer.Position[0]--;
-                            HandleInteraction();
-                        }
+                        //gameManager.ThePlayer.Position[0]++;
+                        //grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
+                        //if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
+                        //{
+                        //    Console.WriteLine(aMenu.CannotMoveIntoWalls());
+                        //    gameManager.ThePlayer.Position[0]--;
+                        //    HandleInteraction();
+                        //}
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.DownArrow:
-                        gameManager.ThePlayer.Position[1]++;
-                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize); ;
-                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            gameManager.ThePlayer.Position[1]--;
-                            HandleInteraction();
-                        }
+                        //gameManager.ThePlayer.Position[1]++;
+                        //grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize); ;
+                        //if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
+                        //{
+                        //    Console.WriteLine(aMenu.CannotMoveIntoWalls());
+                        //    gameManager.ThePlayer.Position[1]--;
+                        //    HandleInteraction();
+                        //}
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.LeftArrow:
-                        gameManager.ThePlayer.Position[0]--;
-                        grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
-                        if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
-                        {
-                            Console.WriteLine(aMenu.CannotMoveIntoWalls());
-                            gameManager.ThePlayer.Position[0]++;
-                            HandleInteraction();
-                        }
+                        //gameManager.ThePlayer.Position[0]--;
+                        //grid.FindCell(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize);
+                        //if (grid.TestBounds(gameManager.ThePlayer.Position[0], gameManager.ThePlayer.Position[1], gridSize))
+                        //{
+                        //    Console.WriteLine(aMenu.CannotMoveIntoWalls());
+                        //    gameManager.ThePlayer.Position[0]++;
+                        //    HandleInteraction();
+                        //}
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.W:
-                        //string fileToWrite = gameManager.DrawPlayfield();
-                        string path = Directory.GetCurrentDirectory();
-                        System.IO.File.WriteAllText(@path, gameManager.DrawPlayfield());
-                        Console.WriteLine("File saved.");
+                        ////string fileToWrite = gameManager.DrawPlayfield();
+                        //string path = Directory.GetCurrentDirectory();
+                        //System.IO.File.WriteAllText(@path, gameManager.DrawPlayfield());
+                        //Console.WriteLine("File saved.");
                         HandleInteraction();
                         break;
                     default:
