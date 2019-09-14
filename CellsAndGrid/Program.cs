@@ -31,8 +31,6 @@ namespace CellsAndGrid
             Console.WriteLine(aMenu.GetYStartingPoint());
             int yPos = int.Parse(Console.ReadLine());
 
-            xPos--;
-            yPos--;
             GameManager gameManager = new GameManager(xPos, yPos, gridSize);
 
             //Console.Write(grid.DrawGrid(xSize, ySize, xPos, yPos));
@@ -53,6 +51,7 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[1]++;
                         //    HandleInteraction();
                         //}
+                        gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
@@ -66,6 +65,7 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[0]--;
                         //    HandleInteraction();
                         //}
+                        gameManager.ThePlayer.MovePlayer(ConsoleKey.RightArrow);
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
@@ -79,6 +79,7 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[1]--;
                         //    HandleInteraction();
                         //}
+                        gameManager.ThePlayer.MovePlayer(ConsoleKey.DownArrow);
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
@@ -92,6 +93,7 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[0]++;
                         //    HandleInteraction();
                         //}
+                        gameManager.ThePlayer.MovePlayer(ConsoleKey.LeftArrow);
                         Console.Write(gameManager.DrawPlayfield());
                         Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();

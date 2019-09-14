@@ -63,7 +63,7 @@ namespace CellsAndGrid
             {
                 cell.CellContents = "- ";
                 if (cell.IsEdge) cell.CellContents = "% ";
-                if (ThePlayer.Position[0] == cell.XPosition && ThePlayer.Position[1] == cell.YPosition)
+                if (ThePlayer.Position[0] == cell.YPosition && ThePlayer.Position[1] == cell.XPosition)
                     cell.ContainsPlayer = true;
             }
         }
@@ -71,6 +71,7 @@ namespace CellsAndGrid
         {
             Playfield = null;
             Console.Clear();
+            FillCells();
             int lineLength = 0;
             foreach (Cell cell in CellGrid)
             {

@@ -1,4 +1,6 @@
-﻿namespace CellsAndGrid
+﻿using System;
+
+namespace CellsAndGrid
 {
     class Player
     {
@@ -15,12 +17,30 @@
                 Position = new int[2];
                 Position[0] = startX;
                 Position[1] = startY;
+                _xPosition = startX;
+                _yPosition = startY;
             }
         }
 
-        public bool MovePlayer()
+        public int[] MovePlayer(ConsoleKey key)
         {
-            return true;
+            switch (key)
+            {
+                case ConsoleKey.UpArrow:
+                    Position[1] = _yPosition--;
+                    break;
+                case ConsoleKey.RightArrow:
+                    Position[0] = _xPosition++;
+                    break;
+                case ConsoleKey.DownArrow:
+                    Position[1] = _yPosition++;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    Position[0] = _xPosition--;
+                    break;
+            }
+
+            return Position;
         }
     }
 }
