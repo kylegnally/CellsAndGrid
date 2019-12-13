@@ -6,6 +6,8 @@ namespace CellsAndGrid
     {
         private int _xPosition;
         private int _yPosition;
+        //private int _oldX;        // these two variables were for debugging
+        //private int _oldY;
         private int[] _position;
 
         public int[] Position { get; set; }
@@ -24,21 +26,27 @@ namespace CellsAndGrid
 
         public int[] MovePlayer(ConsoleKey key)
         {
-            switch (key)
-            {
+            //_oldX = _xPosition;       // debugging variables
+            //_oldY = _yPosition;
+
+            switch (key)                        // You can't assign the values directly to the 
+            {                                   // members of the array. Trying to do so will fail.
                 case ConsoleKey.UpArrow:
-                    Position[1] = _yPosition--;
+                    _yPosition--;
                     break;
                 case ConsoleKey.RightArrow:
-                    Position[0] = _xPosition++;
+                     _xPosition++;
                     break;
                 case ConsoleKey.DownArrow:
-                    Position[1] = _yPosition++;
+                    _yPosition++;
                     break;
                 case ConsoleKey.LeftArrow:
-                    Position[0] = _xPosition--;
+                    _xPosition--;
                     break;
             }
+
+            Position[0] = _xPosition;
+            Position[1] = _yPosition;
 
             return Position;
         }
