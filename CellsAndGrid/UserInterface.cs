@@ -36,6 +36,11 @@ namespace CellsAndGrid
             return _returnString = "Grid created.";
         }
 
+        public string PlayerLocation()
+        {
+            return _returnString = "The player's position is: ";
+        }
+
         public string CannotMoveIntoWalls()
         {
             return _returnString = "You've attempted to move into a wall. Walls are impassable. Because they're walls.";
