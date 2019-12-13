@@ -66,7 +66,11 @@ namespace CellsAndGrid
             int lineLength = 0;
             foreach (Cell cell in CellGrid)
             {
-                if (cell.ContainsPlayer) cell.CellContents = "* ";
+                if (cell.ContainsPlayer)
+                {
+                    cell.CellContents = "* ";
+                    ThePlayer.CurrentCell = cell; // OF COURSE the cell the player is in doesn't contain a wall!
+                }
                 Playfield += cell.CellContents;
 
                 lineLength++;

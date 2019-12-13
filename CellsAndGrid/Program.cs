@@ -36,18 +36,17 @@ namespace CellsAndGrid
                 switch (GetInteraction())
                 {
                     case ConsoleKey.UpArrow:
-                        if (gameManager.ThePlayer.Position[1] > 1)
-                        {
-                            gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
-                            Console.Write(gameManager.DrawPlayfield());
-                            Console.WriteLine(aMenu.PressArrowToMove());
-                        }
-                        else
-                        {
-                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
-                            Console.Write(gameManager.DrawPlayfield());
-                            Console.Write(aMenu.CannotMoveIntoWalls());
-                        }
+                        
+                        gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
+                        Console.Write(gameManager.DrawPlayfield());
+                        if (gameManager.ThePlayer.HitAWall(gameManager.ThePlayer.CurrentCell))                          // you need a NextCell that
+                        {                                                                                               // gets calculated and stored
+                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);   // BEFORE the player moves there
+                            Console.Write(aMenu.CannotMoveIntoWalls());                                                 // so you can check the contents of
+                        }                                                                                               // where the player will go next
+
+                        Console.Write(gameManager.DrawPlayfield());
+                        Console.WriteLine(aMenu.PressArrowToMove());
                         HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:

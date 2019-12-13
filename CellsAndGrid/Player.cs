@@ -9,13 +9,17 @@ namespace CellsAndGrid
         //private int _oldX;        // these two variables were for debugging
         //private int _oldY;
         private int[] _position;
+        private Cell _currentCell;
 
         public int[] Position { get; set; }
+
+        public Cell CurrentCell { get; set; }
 
         public Player(int startX, int startY)
         {
             if (Position == null)
             {
+                CurrentCell = null;
                 Position = new int[2];
                 Position[0] = startX;
                 Position[1] = startY;
@@ -51,14 +55,18 @@ namespace CellsAndGrid
             return Position;
         }
 
-        public int[] DenyMovement(int[] playerPosition, int gridSize)
+        public bool HitAWall(Cell currentCell)
         {
-            if (playerPosition[0] < 1) playerPosition[0] = 1;
-            if (playerPosition[0] > gridSize - 1) playerPosition[0] = gridSize - 1;
-            if (playerPosition[1] < 1) playerPosition[1] = 1;
-            if (playerPosition[1] > gridSize - 1) playerPosition[1] = gridSize - 1;
+            if (currentCell.CellContents == "% ") return true;
+            return false;
+        }
 
-            return playerPosition;
+        public void DenyMovement(int[] playerPosition, int gridSize)
+        {
+            if (playerPosition[0] < 1) Position[0] = 1;
+            if (playerPosition[0] > gridSize - 1) Position[0] = gridSize - 1;
+            if (playerPosition[1] < 1) Position[1] = 1;
+            if (playerPosition[1] > gridSize - 1) Position[1] = gridSize - 1;
         }
     }
 }
