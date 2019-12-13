@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CellsAndGrid
+﻿namespace CellsAndGrid
 {
     class Grid : GameManager
     {
@@ -34,5 +32,13 @@ namespace CellsAndGrid
         //    bool isEdge = CellGrid[findX, findY].IsEdge;
         //    return isEdge;
         //}
+
+        //public bool OutOfBounds(int[] playerPosition)
+        //{
+        //    if (playerPosition[0] == 0 || playerPosition[1] == 0) return true;
+        //    if (playerPosition[0] == GridSize -1 || playerPosition[1] == GridSize - 1) return true;
+        //    return false;
+        //}
+
     }
 }

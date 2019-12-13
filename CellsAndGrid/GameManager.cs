@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CellsAndGrid
 {
@@ -38,10 +33,6 @@ namespace CellsAndGrid
             InitGrid(GridSize);
         }
 
-        //public int[] FindPlayer(int x, int y)
-        //{
-
-        //}
         protected Cell[,] InitGrid(int size)
         {
             for (int x = 0; x < GridSize; x++)

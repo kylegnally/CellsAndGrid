@@ -50,5 +50,15 @@ namespace CellsAndGrid
 
             return Position;
         }
+
+        public int[] DenyMovement(int[] playerPosition, int gridSize)
+        {
+            if (playerPosition[0] < 1) playerPosition[0] = 1;
+            if (playerPosition[0] > gridSize - 1) playerPosition[0] = gridSize - 1;
+            if (playerPosition[1] < 1) playerPosition[1] = 1;
+            if (playerPosition[1] > gridSize - 1) playerPosition[1] = gridSize - 1;
+
+            return playerPosition;
+        }
     }
 }

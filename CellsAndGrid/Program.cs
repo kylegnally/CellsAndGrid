@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.IO;
 
 namespace CellsAndGrid
 {
@@ -51,9 +45,18 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[1]++;
                         //    HandleInteraction();
                         //}
-                        gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
-                        Console.Write(gameManager.DrawPlayfield());
-                        Console.WriteLine(aMenu.PressArrowToMove());
+                        if (gameManager.ThePlayer.Position[1] > 1)
+                        {
+                            gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.WriteLine(aMenu.PressArrowToMove());
+                        }
+                        else
+                        {
+                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.Write(aMenu.CannotMoveIntoWalls());
+                        }
                         HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:
@@ -65,9 +68,18 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[0]--;
                         //    HandleInteraction();
                         //}
-                        gameManager.ThePlayer.MovePlayer(ConsoleKey.RightArrow);
-                        Console.Write(gameManager.DrawPlayfield());
-                        Console.WriteLine(aMenu.PressArrowToMove());
+                        if (gameManager.ThePlayer.Position[0] < gridSize)
+                        {
+                            gameManager.ThePlayer.MovePlayer(ConsoleKey.RightArrow);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.WriteLine(aMenu.PressArrowToMove());
+                        }
+                        else
+                        {
+                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.Write(aMenu.CannotMoveIntoWalls());
+                        }
                         HandleInteraction();
                         break;
                     case ConsoleKey.DownArrow:
@@ -79,9 +91,18 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[1]--;
                         //    HandleInteraction();
                         //}
-                        gameManager.ThePlayer.MovePlayer(ConsoleKey.DownArrow);
-                        Console.Write(gameManager.DrawPlayfield());
-                        Console.WriteLine(aMenu.PressArrowToMove());
+                        if (gameManager.ThePlayer.Position[1] < gridSize)
+                        {
+                            gameManager.ThePlayer.MovePlayer(ConsoleKey.DownArrow);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.WriteLine(aMenu.PressArrowToMove());
+                        }
+                        else
+                        {
+                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.Write(aMenu.CannotMoveIntoWalls());
+                        }
                         HandleInteraction();
                         break;
                     case ConsoleKey.LeftArrow:
@@ -93,18 +114,27 @@ namespace CellsAndGrid
                         //    gameManager.ThePlayer.Position[0]++;
                         //    HandleInteraction();
                         //}
-                        gameManager.ThePlayer.MovePlayer(ConsoleKey.LeftArrow);
-                        Console.Write(gameManager.DrawPlayfield());
-                        Console.WriteLine(aMenu.PressArrowToMove());
+                        if (gameManager.ThePlayer.Position[0] > 1)
+                        {
+                            gameManager.ThePlayer.MovePlayer(ConsoleKey.LeftArrow);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.WriteLine(aMenu.PressArrowToMove());
+                        }
+                        else
+                        {
+                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.Write(aMenu.CannotMoveIntoWalls());
+                        }
                         HandleInteraction();
                         break;
-                    case ConsoleKey.W:
+                    //case ConsoleKey.W:
                         ////string fileToWrite = gameManager.DrawPlayfield();
                         //string path = Directory.GetCurrentDirectory();
                         //System.IO.File.WriteAllText(@path, gameManager.DrawPlayfield());
                         //Console.WriteLine("File saved.");
-                        HandleInteraction();
-                        break;
+                        //HandleInteraction();
+                        //break;
                     //case ConsoleKey.Escape:
                     //    if (aMenu.ConfirmExit()) Environment.Exit(0);
                     //    else HandleInteraction();
