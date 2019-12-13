@@ -50,5 +50,12 @@ namespace CellsAndGrid
         {
             return _returnString = "This question must have an answer in the form of an integer (a whole number) for this universe to exist.";
         }
+
+        //public bool ConfirmExit()
+        //{
+        //    Console.WriteLine("Are you sure (y/N)?");
+        //    if (Console.ReadKey().Key == ConsoleKey.Y) return true;
+        //    else return false;
+        //}
     }
 }

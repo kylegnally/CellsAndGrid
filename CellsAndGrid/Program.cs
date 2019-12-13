@@ -105,6 +105,10 @@ namespace CellsAndGrid
                         //Console.WriteLine("File saved.");
                         HandleInteraction();
                         break;
+                    //case ConsoleKey.Escape:
+                    //    if (aMenu.ConfirmExit()) Environment.Exit(0);
+                    //    else HandleInteraction();
+                    //    break;
                     default:
                         Environment.Exit(0);
                         break;
