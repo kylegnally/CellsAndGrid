@@ -49,7 +49,6 @@ namespace CellsAndGrid
             }
         }
 
-
         public string DrawPlayfield()
         {
             Playfield = null;
