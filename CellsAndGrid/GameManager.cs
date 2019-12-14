@@ -4,31 +4,31 @@ namespace CellsAndGrid
 {
     class GameManager
     {
-        private int _xPosition;
-        private int _yPosition;
-        private int[] nextPosition;
+        //private int _xPosition;
+        //private int _yPosition;
+        private readonly int[] nextPosition;
 
-        private Grid _grid;
+        //private Grid _grid;
         //private Player _player;
-        private Cell _oneCell;
+        //private Cell _oneCell;
 
-        public int XPosition { get; set; }
-        public int YPosition { get; set; }
-        public int GridSize { get;  set; }
+        //private int XPosition { get; }
+        //private int YPosition { get; }
+        private int GridSize { get; }
 
         public bool ValidMove { get; private set; }
 
-        public string Playfield { get; set; }
+        private string Playfield { get; set; }
 
-        public Grid GridObject { get; set; }
-        public Cell[,] CellGrid { get; set; }
-        public Player ThePlayer { get; set; }
-        public Cell SingleCell { get; set; }
+        //public Grid GridObject { get; set; }
+        protected Cell[,] CellGrid { get; }
+        public Player ThePlayer { get; }
+        //public Cell SingleCell { get; set; }
 
         public GameManager(int xStart, int yStart, int gridSize) // refactor to just int x and int y?
         {
-            XPosition = xStart;
-            YPosition = yStart;
+            //XPosition = xStart;
+            //YPosition = yStart;
             GridSize = gridSize;
             nextPosition = new int[2];
 
@@ -37,7 +37,7 @@ namespace CellsAndGrid
             InitGrid(GridSize);
         }
 
-        protected Cell[,] InitGrid(int size)
+        private void InitGrid(int size)
         {
             for (int x = 0; x < GridSize; x++)
             {
@@ -49,7 +49,6 @@ namespace CellsAndGrid
                 }
             }
             FillCells();
-            return CellGrid;
         }
 
         private void FillCells()
@@ -75,8 +74,9 @@ namespace CellsAndGrid
                 if (cell.ContainsPlayer)
                 {
                     cell.CellContents = "* ";
-                    ThePlayer.CurrentCell = cell; // OF COURSE the cell the player is in doesn't contain a wall!
                 }
+
+                if (cell.WasVisited) cell.CellContents = "  ";
                 Playfield += cell.CellContents;
 
                 lineLength++;
@@ -116,14 +116,6 @@ namespace CellsAndGrid
                     nextPosition[0]--;
                     break;
             }
-
-            //if (nextPosition[1] < 1 ||              
-            //    nextPosition[0] >= GridSize - 1 ||  
-            //    nextPosition[1] >= GridSize - 1 ||  
-            //    nextPosition[0] < 1)                
-            //    ValidMove = false; 
-
-            //else ValidMove = true;
 
             if (nextPosition[1] > 0 &&                  // Y validity test, moving up
                 nextPosition[0] < GridSize - 1 &&      // X validity test, moving right

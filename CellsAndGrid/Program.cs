@@ -6,17 +6,13 @@ namespace CellsAndGrid
     {
         static void Main(string[] args)
         {
-            int xSize;
-            int ySize;
-            int gridSize;
-
             UserInterface aMenu = new UserInterface();
             Console.WriteLine(aMenu.GetGridSize());
-            xSize = int.Parse(Console.ReadLine());
-            ySize = xSize;
-            gridSize = xSize;
+            //var xSize = int.Parse(Console.ReadLine());
+            //var ySize = xSize;
+            var gridSize = int.Parse(Console.ReadLine());
 
-            Grid grid = new Grid(xSize, ySize, gridSize);
+            //Grid grid = new Grid(xSize, ySize, gridSize);
             Console.WriteLine(aMenu.GridCreatedMessage());
             Console.WriteLine();
             Console.WriteLine(aMenu.GetXStartingPoint());
@@ -24,6 +20,7 @@ namespace CellsAndGrid
             Console.WriteLine();
             Console.WriteLine(aMenu.GetYStartingPoint());
             int yPos = int.Parse(Console.ReadLine());
+            
 
             GameManager gameManager = new GameManager(xPos, yPos, gridSize);
 
