@@ -11,14 +11,13 @@ namespace CellsAndGrid
 
         private string Playfield { get; set; }
 
-        protected Cell[,] CellGrid { get; }
+        private Cell[,] CellGrid { get; }
         public Player ThePlayer { get; }
 
         public GameManager(int xStart, int yStart, int gridSize) 
         {
             GridSize = gridSize;
             _nextPosition = new int[2];
-
             ThePlayer = new Player(xStart, yStart);
             CellGrid = new Cell[GridSize, GridSize];
             InitGrid(GridSize);
@@ -61,20 +60,20 @@ namespace CellsAndGrid
             int lineLength = 0;
             foreach (Cell cell in CellGrid)
             {
-                if (cell.ContainsPlayer)
+                if (cell.ContainsPlayer) cell.CellContents = "* ";
+                if (cell.WasVisited && !cell.ContainsPlayer)
                 {
-                    cell.CellContents = "* ";
+                    cell.CellContents = "  ";
                 }
-
-                if (cell.WasVisited && !cell.ContainsPlayer) cell.CellContents = "  ";
                 Playfield += cell.CellContents;
 
                 lineLength++;
 
+
                 if (lineLength == GridSize)
                 {
                     Playfield += "\n";
-                    lineLength = 0;
+                        lineLength = 0;
                 }
             }
 

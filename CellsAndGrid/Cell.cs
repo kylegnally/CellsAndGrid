@@ -9,7 +9,6 @@ namespace CellsAndGrid
             XPosition = x;
             YPosition = y;
             ContainsPlayer = false;
-            WasVisited = WasVisited;
             IsEdge = TestForEdge(x, y, gridSize);
         }
 
@@ -19,6 +18,7 @@ namespace CellsAndGrid
         public bool ContainsPlayer { get; set; }
         public bool IsEdge { get; set; }
         public string CellContents { get; set; }
+
         private bool TestForEdge(int x, int y, int size)
         {
             if (y == 0 || x == 0 || x == size - 1 || y == size - 1) return true;
