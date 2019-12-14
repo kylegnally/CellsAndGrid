@@ -45,7 +45,11 @@ namespace CellsAndGrid
                 cell.CellContents = "- ";
                 if (cell.IsEdge) cell.CellContents = "% ";
                 if (ThePlayer.Position[0] == cell.YPosition && ThePlayer.Position[1] == cell.XPosition)
+                {
                     cell.ContainsPlayer = true;
+                    cell.WasVisited = true;
+                }
+                else cell.ContainsPlayer = false;
             }
         }
 
@@ -62,7 +66,7 @@ namespace CellsAndGrid
                     cell.CellContents = "* ";
                 }
 
-                if (cell.WasVisited) cell.CellContents = "  ";
+                if (cell.WasVisited && !cell.ContainsPlayer) cell.CellContents = "  ";
                 Playfield += cell.CellContents;
 
                 lineLength++;

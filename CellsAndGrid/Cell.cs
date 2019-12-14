@@ -15,7 +15,7 @@ namespace CellsAndGrid
 
         public int XPosition { get; }
         public int YPosition { get; }
-        public bool WasVisited { get; }
+        public bool WasVisited { get; set; }
         public bool ContainsPlayer { get; set; }
         public bool IsEdge { get; set; }
         public string CellContents { get; set; }
