@@ -29,6 +29,12 @@ namespace CellsAndGrid
 
             Console.Write(gameManager.DrawPlayfield());
             Console.WriteLine(aMenu.PressArrowToMove());
+
+            /// Let's make a Mover class that can handle movement for everything.
+            /// It will inherit from GameManager so it can know everything it needs
+            /// to know and will spit out current positions, check for move validity,
+            /// and do everything related to a move
+
             HandleInteraction();
 
             void HandleInteraction()
@@ -36,21 +42,26 @@ namespace CellsAndGrid
                 switch (GetInteraction())
                 {
                     case ConsoleKey.UpArrow:
-                        
-                        gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
-                        Console.Write(gameManager.DrawPlayfield());
-                        if (gameManager.ThePlayer.HitAWall(gameManager.ThePlayer.CurrentCell))                          // you need a NextCell that
-                        {                                                                                               // gets calculated and stored
-                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);   // BEFORE the player moves there
-                            Console.Write(aMenu.CannotMoveIntoWalls());                                                 // so you can check the contents of
-                        }                                                                                               // where the player will go next
+                        gameManager.CheckForValidMove(ConsoleKey.UpArrow);
 
-                        Console.Write(gameManager.DrawPlayfield());
-                        Console.WriteLine(aMenu.PressArrowToMove());
+                        if (gameManager.ValidMove)
+                        {
+                            gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.WriteLine(aMenu.PressArrowToMove());
+                        }
+                        else
+                        {
+                            Console.Write(gameManager.DrawPlayfield());
+                            Console.Write(aMenu.CannotMoveIntoWalls());
+                        }
+
                         HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:
-                        if (gameManager.ThePlayer.Position[0] < gridSize)
+                        gameManager.CheckForValidMove(ConsoleKey.RightArrow);
+
+                        if (gameManager.ValidMove)
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.RightArrow);
                             Console.Write(gameManager.DrawPlayfield());
@@ -58,14 +69,16 @@ namespace CellsAndGrid
                         }
                         else
                         {
-                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.Write(aMenu.CannotMoveIntoWalls());
                         }
+
                         HandleInteraction();
                         break;
                     case ConsoleKey.DownArrow:
-                        if (gameManager.ThePlayer.Position[1] < gridSize)
+                        gameManager.CheckForValidMove(ConsoleKey.DownArrow);
+
+                        if (gameManager.ValidMove)
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.DownArrow);
                             Console.Write(gameManager.DrawPlayfield());
@@ -73,14 +86,16 @@ namespace CellsAndGrid
                         }
                         else
                         {
-                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.Write(aMenu.CannotMoveIntoWalls());
                         }
+
                         HandleInteraction();
                         break;
                     case ConsoleKey.LeftArrow:
-                        if (gameManager.ThePlayer.Position[0] > 1)
+                        gameManager.CheckForValidMove(ConsoleKey.LeftArrow);
+
+                        if (gameManager.ValidMove)
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.LeftArrow);
                             Console.Write(gameManager.DrawPlayfield());
@@ -88,10 +103,10 @@ namespace CellsAndGrid
                         }
                         else
                         {
-                            gameManager.ThePlayer.DenyMovement(gameManager.ThePlayer.Position, gameManager.GridSize);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.Write(aMenu.CannotMoveIntoWalls());
                         }
+
                         HandleInteraction();
                         break;
                     //case ConsoleKey.W:

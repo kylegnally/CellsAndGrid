@@ -6,6 +6,7 @@ namespace CellsAndGrid
     {
         private int _xPosition;
         private int _yPosition;
+        private int[] nextPosition;
 
         private Grid _grid;
         //private Player _player;
@@ -13,7 +14,9 @@ namespace CellsAndGrid
 
         public int XPosition { get; set; }
         public int YPosition { get; set; }
-        public int GridSize { get; set; }
+        public int GridSize { get;  set; }
+
+        public bool ValidMove { get; private set; }
 
         public string Playfield { get; set; }
 
@@ -27,6 +30,7 @@ namespace CellsAndGrid
             XPosition = xStart;
             YPosition = yStart;
             GridSize = gridSize;
+            nextPosition = new int[2];
 
             ThePlayer = new Player(xStart, yStart);
             CellGrid = new Cell[GridSize, GridSize];
@@ -58,6 +62,8 @@ namespace CellsAndGrid
                     cell.ContainsPlayer = true;
             }
         }
+
+
         public string DrawPlayfield()
         {
             Playfield = null;
@@ -83,6 +89,46 @@ namespace CellsAndGrid
             }
 
             return Playfield;
+        }
+
+        public void CheckForValidMove(ConsoleKey key)
+        {
+            ValidMove = false;
+
+            int[] currentPosition = ThePlayer.Position;
+            nextPosition[0] = currentPosition[0];
+            nextPosition[1] = currentPosition[1];
+
+            switch (key)
+            {
+                case ConsoleKey.UpArrow:
+                    nextPosition[1]--;
+                    break;
+                case ConsoleKey.RightArrow:
+                    nextPosition[0]++;
+
+                    break;
+                case ConsoleKey.DownArrow:
+                    nextPosition[1]++;
+
+                    break;
+                case ConsoleKey.LeftArrow:
+                    nextPosition[0]--;
+                    break;
+            }
+
+            //if (nextPosition[1] < 1 ||              
+            //    nextPosition[0] >= GridSize - 1 ||  
+            //    nextPosition[1] >= GridSize - 1 ||  
+            //    nextPosition[0] < 1)                
+            //    ValidMove = false; 
+
+            //else ValidMove = true;
+
+            if (nextPosition[1] > 0 &&                  // Y validity test, moving up
+                nextPosition[0] < GridSize - 1 &&      // X validity test, moving right
+                nextPosition[1] < GridSize - 1 &&      // Y validity test, moving down
+                nextPosition[0] > 0) ValidMove = true;  // X validity test, moving left
         }
     }
 }
