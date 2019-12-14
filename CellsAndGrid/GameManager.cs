@@ -4,33 +4,20 @@ namespace CellsAndGrid
 {
     class GameManager
     {
-        //private int _xPosition;
-        //private int _yPosition;
-        private readonly int[] nextPosition;
-
-        //private Grid _grid;
-        //private Player _player;
-        //private Cell _oneCell;
-
-        //private int XPosition { get; }
-        //private int YPosition { get; }
+        private readonly int[] _nextPosition;
         private int GridSize { get; }
 
         public bool ValidMove { get; private set; }
 
         private string Playfield { get; set; }
 
-        //public Grid GridObject { get; set; }
         protected Cell[,] CellGrid { get; }
         public Player ThePlayer { get; }
-        //public Cell SingleCell { get; set; }
 
-        public GameManager(int xStart, int yStart, int gridSize) // refactor to just int x and int y?
+        public GameManager(int xStart, int yStart, int gridSize) 
         {
-            //XPosition = xStart;
-            //YPosition = yStart;
             GridSize = gridSize;
-            nextPosition = new int[2];
+            _nextPosition = new int[2];
 
             ThePlayer = new Player(xStart, yStart);
             CellGrid = new Cell[GridSize, GridSize];
@@ -91,36 +78,36 @@ namespace CellsAndGrid
             return Playfield;
         }
 
-        public void CheckForValidMove(ConsoleKey key)
+        public void CheckForValidMove(ConsoleKey key)           // this should also be in a Mover class
         {
             ValidMove = false;
 
             int[] currentPosition = ThePlayer.Position;
-            nextPosition[0] = currentPosition[0];
-            nextPosition[1] = currentPosition[1];
+            _nextPosition[0] = currentPosition[0];
+            _nextPosition[1] = currentPosition[1];
 
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    nextPosition[1]--;
+                    _nextPosition[1]--;
                     break;
                 case ConsoleKey.RightArrow:
-                    nextPosition[0]++;
+                    _nextPosition[0]++;
 
                     break;
                 case ConsoleKey.DownArrow:
-                    nextPosition[1]++;
+                    _nextPosition[1]++;
 
                     break;
                 case ConsoleKey.LeftArrow:
-                    nextPosition[0]--;
+                    _nextPosition[0]--;
                     break;
             }
 
-            if (nextPosition[1] > 0 &&                  // Y validity test, moving up
-                nextPosition[0] < GridSize - 1 &&      // X validity test, moving right
-                nextPosition[1] < GridSize - 1 &&      // Y validity test, moving down
-                nextPosition[0] > 0) ValidMove = true;  // X validity test, moving left
+            if (_nextPosition[1] > 0 &&                 // Y validity test, moving up
+                _nextPosition[0] < GridSize - 1 &&      // X validity test, moving right
+                _nextPosition[1] < GridSize - 1 &&      // Y validity test, moving down
+                _nextPosition[0] > 0) ValidMove = true; // X validity test, moving left
         }
     }
 }

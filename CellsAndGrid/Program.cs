@@ -8,11 +8,8 @@ namespace CellsAndGrid
         {
             UserInterface aMenu = new UserInterface();
             Console.WriteLine(aMenu.GetGridSize());
-            //var xSize = int.Parse(Console.ReadLine());
-            //var ySize = xSize;
             var gridSize = int.Parse(Console.ReadLine());
 
-            //Grid grid = new Grid(xSize, ySize, gridSize);
             Console.WriteLine(aMenu.GridCreatedMessage());
             Console.WriteLine();
             Console.WriteLine(aMenu.GetXStartingPoint());
@@ -106,13 +103,6 @@ namespace CellsAndGrid
 
                         HandleInteraction();
                         break;
-                    //case ConsoleKey.W:
-                        ////string fileToWrite = gameManager.DrawPlayfield();
-                        //string path = Directory.GetCurrentDirectory();
-                        //System.IO.File.WriteAllText(@path, gameManager.DrawPlayfield());
-                        //Console.WriteLine("File saved.");
-                        //HandleInteraction();
-                        //break;
                     default:
                         Environment.Exit(0);
                         break;

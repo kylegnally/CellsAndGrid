@@ -4,48 +4,21 @@ namespace CellsAndGrid
 {
     class Cell
     {
-        //private static int _counter;
         public Cell(int x, int y, int gridSize)
         {
-            //var rand = new Random();
-
             XPosition = x;
             YPosition = y;
-            //GridSize = gridSize;
             ContainsPlayer = false;
             WasVisited = WasVisited;
             IsEdge = TestForEdge(x, y, gridSize);
         }
 
-        public int XPosition { get; set; }
-        public int YPosition { get; set; }
-        //private int GridSize { get; }
+        public int XPosition { get; }
+        public int YPosition { get; }
+        public bool WasVisited { get; }
         public bool ContainsPlayer { get; set; }
-
-        public bool WasVisited { get; set; }
-
-        public Cell[,] CellGrid { get; set; }
-
         public bool IsEdge { get; set; }
         public string CellContents { get; set; }
-        
-        //public void DetermineContents(int x, int y, int grid)
-        //{
-        //    if (ContainsPlayer)
-        //    {
-        //        CellContents = "* ";
-        //        WasVisited = true;
-        //    }
-        //    else
-        //    {
-        //        if (WasVisited && !IsEdge)
-        //            CellContents = "  ";
-        //        else if (IsEdge)
-        //            CellContents = "% ";
-        //        else CellContents = "- ";
-        //    }
-        //}
-
         private bool TestForEdge(int x, int y, int size)
         {
             if (y == 0 || x == 0 || x == size - 1 || y == size - 1) return true;
