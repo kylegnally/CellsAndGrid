@@ -8,6 +8,8 @@ namespace CellsAndGrid
         private int _yPosition;
 
         public int[] Position { get; }
+        public int PlayerScore { get; set; }
+        
 
         public Player(int startX, int startY)
         {
@@ -17,6 +19,7 @@ namespace CellsAndGrid
             Position[1] = startY;
             _xPosition = startX;
             _yPosition = startY;
+            PlayerScore = 0;
         }
 
         public void MovePlayer(ConsoleKey key)

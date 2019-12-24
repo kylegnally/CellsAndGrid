@@ -13,6 +13,7 @@ namespace CellsAndGrid
 
         private Cell[,] CellGrid { get; }
         public Player ThePlayer { get; }
+        private Cell SingleCell { get; set; }
 
         public GameManager(int xStart, int yStart, int gridSize) 
         {
@@ -20,6 +21,7 @@ namespace CellsAndGrid
             _nextPosition = new int[2];
             ThePlayer = new Player(xStart, yStart);
             CellGrid = new Cell[GridSize, GridSize];
+            SingleCell = new Cell(xStart, yStart, gridSize);
             InitGrid(GridSize);
         }
 
@@ -110,6 +112,14 @@ namespace CellsAndGrid
                 _nextPosition[0] < GridSize - 1 &&      // X validity test, moving right
                 _nextPosition[1] < GridSize - 1 &&      // Y validity test, moving down
                 _nextPosition[0] > 0) ValidMove = true; // X validity test, moving left
+        }
+
+        public void ScoreTheMove()
+        {
+            if (CellGrid[_nextPosition[0], _nextPosition[1]].CellContents == "- ")
+            {
+                ThePlayer.PlayerScore++;
+            }
         }
     }
 }
