@@ -5,6 +5,7 @@ namespace CellsAndGrid
     class GameManager
     {
         private readonly int[] _nextPosition;
+        private bool scoreDrawn;
         private int GridSize { get; }
 
         public bool ValidMove { get; private set; }
@@ -57,6 +58,7 @@ namespace CellsAndGrid
         public string DrawPlayfield()
         {
             Playfield = null;
+            scoreDrawn = false;
             Console.Clear();
             FillCells();
             int lineLength = 0;
@@ -71,6 +73,12 @@ namespace CellsAndGrid
 
                 lineLength++;
 
+                if (lineLength == GridSize && scoreDrawn == false)
+                {
+                    Playfield += "   PLAYER SCORE: " + ThePlayer.PlayerScore;
+                    scoreDrawn = true;
+                }
+
 
                 if (lineLength == GridSize)
                 {
@@ -79,6 +87,7 @@ namespace CellsAndGrid
                 }
             }
 
+            scoreDrawn = false;
             return Playfield;
         }
 
@@ -107,6 +116,7 @@ namespace CellsAndGrid
                     _nextPosition[0]--;
                     break;
             }
+            ScoreTheMove(_nextPosition[0], _nextPosition[1]);
 
             if (_nextPosition[1] > 0 &&                 // Y validity test, moving up
                 _nextPosition[0] < GridSize - 1 &&      // X validity test, moving right
@@ -114,9 +124,9 @@ namespace CellsAndGrid
                 _nextPosition[0] > 0) ValidMove = true; // X validity test, moving left
         }
 
-        public void ScoreTheMove()
+        public void ScoreTheMove(int positionX, int positionY)
         {
-            if (CellGrid[_nextPosition[0], _nextPosition[1]].CellContents == "- ")
+            if (CellGrid[positionX, positionY].CellContents == "- ")
             {
                 ThePlayer.PlayerScore++;
             }

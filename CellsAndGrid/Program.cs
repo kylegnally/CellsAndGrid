@@ -41,7 +41,6 @@ namespace CellsAndGrid
                         if (gameManager.ValidMove)
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
-                            gameManager.ScoreTheMove();
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
