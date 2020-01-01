@@ -36,14 +36,14 @@ namespace CellsAndGrid
                 switch (GetInteraction())
                 {
                     case ConsoleKey.UpArrow:
-                        gameManager.CheckForValidMove(ConsoleKey.UpArrow);
-
-                        if (gameManager.ValidMove)
+                        if (gameManager.CheckForValidMove(ConsoleKey.UpArrow))
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
+                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
+
                         else
                         {
                             Console.Write(gameManager.DrawPlayfield());
@@ -53,14 +53,16 @@ namespace CellsAndGrid
                         HandleInteraction();
                         break;
                     case ConsoleKey.RightArrow:
-                        gameManager.CheckForValidMove(ConsoleKey.RightArrow);
+                        //gameManager.CheckForValidMove(ConsoleKey.RightArrow);
 
-                        if (gameManager.ValidMove)
+                        if (gameManager.CheckForValidMove(ConsoleKey.RightArrow))
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.RightArrow);
+                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
+
                         else
                         {
                             Console.Write(gameManager.DrawPlayfield());
@@ -70,14 +72,16 @@ namespace CellsAndGrid
                         HandleInteraction();
                         break;
                     case ConsoleKey.DownArrow:
-                        gameManager.CheckForValidMove(ConsoleKey.DownArrow);
+                        //gameManager.CheckForValidMove(ConsoleKey.DownArrow);
 
-                        if (gameManager.ValidMove)
+                        if (gameManager.CheckForValidMove(ConsoleKey.DownArrow))
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.DownArrow);
+                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
+
                         else
                         {
                             Console.Write(gameManager.DrawPlayfield());
@@ -87,14 +91,16 @@ namespace CellsAndGrid
                         HandleInteraction();
                         break;
                     case ConsoleKey.LeftArrow:
-                        gameManager.CheckForValidMove(ConsoleKey.LeftArrow);
+                        //gameManager.CheckForValidMove(ConsoleKey.LeftArrow);
 
-                        if (gameManager.ValidMove)
+                        if (gameManager.CheckForValidMove(ConsoleKey.LeftArrow))
                         {
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.LeftArrow);
+                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
+
                         else
                         {
                             Console.Write(gameManager.DrawPlayfield());

@@ -5,16 +5,16 @@ namespace CellsAndGrid
     class GameManager
     {
         private readonly int[] _nextPosition;
-        private bool scoreDrawn;
+        private bool _scoreDrawn;
         private int GridSize { get; }
 
         public bool ValidMove { get; private set; }
 
         private string Playfield { get; set; }
 
-        private Cell[,] CellGrid { get; }
+        private Cell[,] CellGrid { get; set; }
         public Player ThePlayer { get; }
-        private Cell SingleCell { get; set; }
+        public Cell SingleCell { get; set; }
 
         public GameManager(int xStart, int yStart, int gridSize) 
         {
@@ -58,7 +58,7 @@ namespace CellsAndGrid
         public string DrawPlayfield()
         {
             Playfield = null;
-            scoreDrawn = false;
+            _scoreDrawn = false;
             Console.Clear();
             FillCells();
             int lineLength = 0;
@@ -73,10 +73,10 @@ namespace CellsAndGrid
 
                 lineLength++;
 
-                if (lineLength == GridSize && scoreDrawn == false)
+                if (lineLength == GridSize && _scoreDrawn == false)
                 {
                     Playfield += "   PLAYER SCORE: " + ThePlayer.PlayerScore;
-                    scoreDrawn = true;
+                    _scoreDrawn = true;
                 }
 
 
@@ -87,11 +87,11 @@ namespace CellsAndGrid
                 }
             }
 
-            scoreDrawn = false;
+            _scoreDrawn = false;
             return Playfield;
         }
 
-        public void CheckForValidMove(ConsoleKey key)           // this should also be in a Mover class
+        public bool CheckForValidMove(ConsoleKey key)           // this should also be in a Mover class
         {
             ValidMove = false;
 
@@ -99,7 +99,7 @@ namespace CellsAndGrid
             _nextPosition[0] = currentPosition[0];
             _nextPosition[1] = currentPosition[1];
 
-            switch (key)
+            switch (key)                    // get the position of the NEXT move and alter the appropriate field
             {
                 case ConsoleKey.UpArrow:
                     _nextPosition[1]--;
@@ -116,20 +116,27 @@ namespace CellsAndGrid
                     _nextPosition[0]--;
                     break;
             }
-            ScoreTheMove(_nextPosition[0], _nextPosition[1]);
 
-            if (_nextPosition[1] > 0 &&                 // Y validity test, moving up
-                _nextPosition[0] < GridSize - 1 &&      // X validity test, moving right
-                _nextPosition[1] < GridSize - 1 &&      // Y validity test, moving down
-                _nextPosition[0] > 0) ValidMove = true; // X validity test, moving left
+            // SingleCell.CellContents = CellGrid[_nextPosition[0], _nextPosition[1]].CellContents;  // 
+
+
+            if (_nextPosition[1] > 0 &&             // Y validity test, moving up
+                _nextPosition[0] < GridSize - 1 &&  // X validity test, moving right
+                _nextPosition[1] < GridSize - 1 &&  // Y validity test, moving down
+                _nextPosition[0] > 0)               // X validity test, moving left}
+            {
+                SingleCell = CellGrid[_nextPosition[0], _nextPosition[1]];
+                ValidMove = true;
+                // ScoreTheMove(_nextPosition[0], _nextPosition[1]);
+            }
+
+            return ValidMove;
         }
 
         public void ScoreTheMove(int positionX, int positionY)
         {
-            if (CellGrid[positionX, positionY].CellContents == "- ")
-            {
-                ThePlayer.PlayerScore++;
-            }
+            SingleCell.CellContents = CellGrid[_nextPosition[0], _nextPosition[1]].CellContents;
+            ThePlayer.PlayerScore++;
         }
     }
 }
