@@ -69,6 +69,7 @@ namespace CellsAndGrid
                 {
                     cell.CellContents = "  ";
                 }
+                
                 Playfield += cell.CellContents;
 
                 lineLength++;
@@ -132,11 +133,16 @@ namespace CellsAndGrid
 
             return ValidMove;
         }
-
-        public void ScoreTheMove(int positionX, int positionY)
+        
+        public bool ScoreTheMove()
         {
             SingleCell.CellContents = CellGrid[_nextPosition[0], _nextPosition[1]].CellContents;
-            ThePlayer.PlayerScore++;
+            if (SingleCell.CellContents == "- ")
+            {
+                ThePlayer.PlayerScore++;
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace CellsAndGrid
             int yPos = int.Parse(Console.ReadLine());
             
 
-            GameManager gameManager = new GameManager(xPos, yPos, gridSize);
+            GameManager gameManager = new GameManager(xPos, yPos, gridSize); // God object. Rework.
 
             Console.Write(gameManager.DrawPlayfield());
             Console.WriteLine(aMenu.PressArrowToMove());
@@ -38,8 +38,8 @@ namespace CellsAndGrid
                     case ConsoleKey.UpArrow:
                         if (gameManager.CheckForValidMove(ConsoleKey.UpArrow))
                         {
+                            gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
-                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
@@ -57,8 +57,8 @@ namespace CellsAndGrid
 
                         if (gameManager.CheckForValidMove(ConsoleKey.RightArrow))
                         {
+                            gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.RightArrow);
-                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
@@ -76,8 +76,8 @@ namespace CellsAndGrid
 
                         if (gameManager.CheckForValidMove(ConsoleKey.DownArrow))
                         {
+                            gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.DownArrow);
-                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
@@ -95,8 +95,8 @@ namespace CellsAndGrid
 
                         if (gameManager.CheckForValidMove(ConsoleKey.LeftArrow))
                         {
+                            gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.LeftArrow);
-                            gameManager.ScoreTheMove(gameManager.SingleCell.XPosition, gameManager.SingleCell.YPosition);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
                         }
