@@ -38,7 +38,7 @@ namespace CellsAndGrid
                     case ConsoleKey.UpArrow:
                         if (gameManager.CheckForValidMove(ConsoleKey.UpArrow))
                         {
-                            gameManager.ScoreTheMove();
+                            //gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.UpArrow);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
@@ -57,7 +57,7 @@ namespace CellsAndGrid
 
                         if (gameManager.CheckForValidMove(ConsoleKey.RightArrow))
                         {
-                            gameManager.ScoreTheMove();
+                            //gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.RightArrow);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
@@ -76,7 +76,7 @@ namespace CellsAndGrid
 
                         if (gameManager.CheckForValidMove(ConsoleKey.DownArrow))
                         {
-                            gameManager.ScoreTheMove();
+                            //gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.DownArrow);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
@@ -95,7 +95,7 @@ namespace CellsAndGrid
 
                         if (gameManager.CheckForValidMove(ConsoleKey.LeftArrow))
                         {
-                            gameManager.ScoreTheMove();
+                            //gameManager.ScoreTheMove();
                             gameManager.ThePlayer.MovePlayer(ConsoleKey.LeftArrow);
                             Console.Write(gameManager.DrawPlayfield());
                             Console.WriteLine(aMenu.PressArrowToMove());
