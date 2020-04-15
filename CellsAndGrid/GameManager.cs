@@ -124,7 +124,7 @@ namespace CellsAndGrid
             if (_nextPosition[1] > 0 &&             // Y validity test, moving up
                 _nextPosition[0] < GridSize - 1 &&  // X validity test, moving right
                 _nextPosition[1] < GridSize - 1 &&  // Y validity test, moving down
-                _nextPosition[0] > 0)               // X validity test, moving left}
+                _nextPosition[0] > 0)               // X validity test, moving left
             {
                 SingleCell = CellGrid[_nextPosition[0], _nextPosition[1]];
                 ValidMove = true;
