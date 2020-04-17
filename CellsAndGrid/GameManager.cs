@@ -6,6 +6,8 @@ namespace CellsAndGrid
     {
         private readonly int[] _nextPosition;
         private bool _scoreDrawn;
+        private bool[,] _appleOrchardArray;
+        private Random rnd;
         private int GridSize { get; }
 
         public bool ValidMove { get; private set; }
@@ -16,8 +18,10 @@ namespace CellsAndGrid
         public Player ThePlayer { get; }
         public Cell SingleCell { get; set; }
 
-        public GameManager(int xStart, int yStart, int gridSize) 
+        public GameManager(int xStart, int yStart, int gridSize)
         {
+            _appleOrchardArray = new bool[gridSize,gridSize];
+            rnd = new Random();
             GridSize = gridSize;
             _nextPosition = new int[2];
             ThePlayer = new Player(xStart, yStart);
@@ -37,20 +41,30 @@ namespace CellsAndGrid
                     if (y == 0 || y == GridSize) CellGrid[x, y].IsEdge = true;
                 }
             }
-            FillCells();
+            FillCells(rnd);
         }
 
-        private void FillCells()
+        private void FillCells(Random rnd)
         {
+            Orchard appleOrchard = new Orchard();
             foreach (Cell cell in CellGrid)
             {
+                _appleOrchardArray[cell.XPosition, cell.YPosition] = false;
+                rnd = new Random();
                 cell.CellContents = "- ";
                 if (cell.IsEdge) cell.CellContents = "% ";
+                else if (appleOrchard.Pollinate(rnd) <= 33 && !cell.ContainsPlayer)
+                {
+                    _appleOrchardArray[cell.XPosition, cell.YPosition] = true;
+                    cell.HasApple = true;
+                }
+
                 if (ThePlayer.Position[0] == cell.YPosition && ThePlayer.Position[1] == cell.XPosition)
                 {
                     cell.ContainsPlayer = true;
                     cell.WasVisited = true;
                 }
+
                 else cell.ContainsPlayer = false;
             }
         }
@@ -60,16 +74,23 @@ namespace CellsAndGrid
             Playfield = null;
             _scoreDrawn = false;
             Console.Clear();
-            FillCells();
+            Orchard appleOrchard = new Orchard();
+            FillCells(rnd);
             int lineLength = 0;
             foreach (Cell cell in CellGrid)
             {
+                Random rnd = new Random();
                 if (cell.ContainsPlayer) cell.CellContents = "* ";
                 if (cell.WasVisited && !cell.ContainsPlayer)
                 {
                     cell.CellContents = "  ";
                 }
-                
+
+                if (cell.HasApple)
+                {
+                    cell.CellContents = "o ";
+                }
+
                 Playfield += cell.CellContents;
 
                 lineLength++;
@@ -79,7 +100,6 @@ namespace CellsAndGrid
                     Playfield += "   PLAYER SCORE: " + ThePlayer.PlayerScore;
                     _scoreDrawn = true;
                 }
-
 
                 if (lineLength == GridSize)
                 {
@@ -140,6 +160,12 @@ namespace CellsAndGrid
             if (SingleCell.CellContents == "- ")
             {
                 ThePlayer.PlayerScore++;
+                return true;
+            }
+
+            if (SingleCell.CellContents == "o ")
+            {
+                ThePlayer.PlayerScore += 2;
                 return true;
             }
             return false;

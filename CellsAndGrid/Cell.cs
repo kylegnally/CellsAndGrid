@@ -18,6 +18,7 @@ namespace CellsAndGrid
         public bool ContainsPlayer { get; set; }
         public bool IsEdge { get; set; }
         public string CellContents { get; set; }
+        public bool HasApple { get; set; }
 
         private bool TestForEdge(int x, int y, int size)
         {

@@ -50,6 +50,7 @@
     <Compile Include="IGenericQueue.cs" />
     <Compile Include="IMover.cs" />
     <Compile Include="Mover.cs" />
+    <Compile Include="Orchard.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
